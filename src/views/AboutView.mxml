@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		title="About Tour de Flex">
+	
+	<fx:Script>
+			import flash.net.navigateToURL;
+	</fx:Script>
+
+	<s:navigationContent>
+		<s:Button label="Back" click="navigator.popView()"/>
+	</s:navigationContent>
+
+	<s:layout>
+		<s:VerticalLayout paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10"/>	
+	</s:layout>
+	
+	<s:Label text="Learn more about Tour de Flex:"/>
+	<s:Button label="flex.org/tour" click="navigateToURL(new URLRequest('http://flex.org/tour'))"/>
+	
+	<mx:Spacer height="10"/>
+	
+	<s:Label text="Developed by:"/>
+	<s:Button label="Greg Wilson" click="navigateToURL(new URLRequest('http://gregsramblings.com'))"/>
+	<s:Button label="Christophe Coenraets" click="navigateToURL(new URLRequest('http://coenraets.org'))"/>
+	<s:Button label="James Ward" click="navigateToURL(new URLRequest('http://jamesward.com'))"/>
+
+	<mx:Spacer height="10"/>
+	<s:Label text="©2010 Adobe Systems Incorporated. All rights reserved. The Adobe logo and Flex are registered trademarks of Adobe Systems Incorporated in the United States and/or other countries." width="100%"/>			
+	
+</s:View>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark">
+
+	<fx:Script>
+		import flash.sensors.Geolocation;
+	</fx:Script>
+	
+	<s:creationComplete>
+		if (Geolocation.isSupported)
+		{
+			var g:Geolocation = new Geolocation();
+			
+			if (g.muted)
+			{
+				l.text = "Access to GPS has been denied";
+				return;
+			}
+			
+			l.text = "Locating...";
+			
+			g.addEventListener(GeolocationEvent.UPDATE, function(event:GeolocationEvent):void {
+				l.text = "latitude = " + event.latitude + 
+				"\nlongitude = " + event.longitude +
+				"\naltitude = " + event.altitude +
+				"\nverticalAccuracy = " + event.verticalAccuracy +
+				"\nhorizontalAccuracy = " + event.horizontalAccuracy +
+				"\nspeed = " + event.speed +
+				"\nheading = " + event.heading +
+				"\ntimestamp = " + event.timestamp;
+			});
+		}
+		else
+		{
+			l.text = "Geolocation is not supported on this device";
+		}
+	</s:creationComplete>
+	
+	<s:Label id="l"/>
+	
+</s:Group>

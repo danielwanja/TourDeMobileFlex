@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="Tour de Mobile Flex">
+
+  <property name="FLEX_HOME" value="/home/jamesw/flex_sdk_4.5.0.17689"/>
+  <property name="ANDROID_HOME" value="/home/jamesw/android/android-sdk-linux_86"/>
+
+  <taskdef name="mxmlc" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" classname="flex.ant.MxmlcTask"/>
+
+
+  <property name="out.dir" value="out/release"/>
+
+  <target name="compile">
+    <mkdir dir="${out.dir}"/>
+
+    <mxmlc file="src/TourDeMobileFlex.mxml" output="${out.dir}/TourDeMobileFlex.swf" optimize="true" configname="airmobile">
+      <source-path path-element="src"/>
+    </mxmlc>
+  </target>
+
+  <target name="package" depends="compile">
+    <copy file="src/TourDeMobileFlex-app.xml" todir="${out.dir}"/>
+    <copy todir="${out.dir}/icons">
+      <fileset dir="src/icons"/>
+    </copy>
+    <java jar="${FLEX_HOME}/lib/adt.jar" fork="true" failonerror="true" dir="${out.dir}">
+        <arg value="-package"/>
+        <arg value="-target"/>
+        <arg value="apk"/>
+        <arg value="-storetype"/>
+        <arg value="pkcs12"/>
+        <arg value="-keystore"/>
+        <arg value="/home/jamesw/a.p12"/>
+        <arg value="-storepass"/>
+        <arg value="a"/>
+        <arg value="TourDeMobileFlex.apk"/>
+        <arg value="TourDeMobileFlex-app.xml"/>
+        <arg value="TourDeMobileFlex.swf"/>
+        <arg value="icons"/>
+    </java>
+  </target>
+
+  <target name="install" depends="package">
+    <exec executable="${ANDROID_HOME}/tools/adb">
+      <arg value="install"/>
+      <arg value="-r"/>
+      <arg value="${out.dir}/TourDeMobileFlex.apk"/>
+    </exec>
+  </target>
+
+</project>

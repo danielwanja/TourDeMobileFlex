@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SampleCategory xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns="*" name="Tour de Mobile Flex">
+	<samples>
+		<SampleCategory name="Mobile Components">
+			<samples>
+					<SampleItem name="List" resource="samples.SimpleList"/>
+					<SampleItem name="Form" resource="samples.SimpleForm"/>
+					<SampleItem name="StageWebView" resource="samples.SimpleStageWebView"/>
+			</samples>
+		</SampleCategory>
+		
+		<SampleCategory name="Mobile APIs">
+			<samples>
+					<SampleCategory name="Multitouch/Gestures">
+						<samples>
+							<SampleItem name="Multiple Touch Points" resource="samples.MultiTouch"/>
+							<SampleItem name="Gesture Zoom" resource="samples.GestureZoom"/>
+							<!--<SampleItem name="Gesture Swipe" resource="samples.GestureSwipe"/>-->
+						</samples>
+					</SampleCategory>
+				    <SampleCategory name="Camera">
+						<samples>
+							<SampleItem name="Raw Camera" resource="samples.RawCamera"/>
+							<SampleItem name="CameraUI" resource="samples.NativeCameraUI"/>
+							<SampleItem name="CameraRoll" resource="samples.NativeCameraRoll"/>
+						</samples>
+					</SampleCategory>
+					<SampleCategory name="Screen Management">
+						<samples>
+							<SampleItem name="Full Screen" resource="samples.FullScreen"/>
+							<SampleItem name="Rotate Screen" resource="samples.RotateScreen"/>
+						</samples>
+					</SampleCategory>
+					<SampleItem name="Accelerometer" resource="samples.SimpleAccelerometer"/>
+					<SampleItem name="Database" resource="samples.SimpleDB"/>
+					<SampleItem name="GPS" resource="samples.SimpleGPS"/>
+					<SampleItem name="Native App Integration" resource="samples.NativeAppIntegration"/>
+			</samples>
+		</SampleCategory>
+		
+<!--		<SampleCategory name="Demos">
+			<samples>
+				<SampleItem name="Tour de Flex Dashboard" resource="samples.MiniTourDeDashboard"/>
+			</samples>
+		</SampleCategory>-->
+
+	</samples>
+</SampleCategory>

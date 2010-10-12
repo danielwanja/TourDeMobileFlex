@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<s:layout><s:VerticalLayout/></s:layout>
+	
+	<s:Button label="Email" click="navigateToURL(new URLRequest('mailto:foo@bar.com'))"/>
+	<s:Button label="Browser" click="navigateToURL(new URLRequest('http://www.flex.org'))"/>
+	<s:Button label="Maps" click="navigateToURL(new URLRequest('http://maps.google.com/'))"/>
+	<s:Button label="Phone" click="navigateToURL(new URLRequest('tel:1234567890'))"/>
+	<s:Button label="SMS" click="navigateToURL(new URLRequest('sms:1234567890'))"/>
+	
+</s:Group>

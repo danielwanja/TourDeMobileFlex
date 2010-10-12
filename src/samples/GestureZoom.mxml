@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<fx:Script>
+		import flash.events.TransformGestureEvent;
+		import spark.components.Label;
+	</fx:Script>
+	
+	<s:creationComplete>
+		Multitouch.inputMode = MultitouchInputMode.GESTURE;
+		
+		if (Multitouch.supportedGestures == null || Multitouch.supportedGestures.length == 0 || Multitouch.supportedGestures.indexOf(TransformGestureEvent.GESTURE_ZOOM) == -1)
+		{
+			var l:Label = new Label();
+			l.percentWidth = 100;
+			l.text = "GESTURE_ZOOM is not supported on this device";
+			addElement(l);
+			return;
+		}
+			
+		addEventListener(TransformGestureEvent.GESTURE_ZOOM, function(event:TransformGestureEvent):void {
+			img.scaleX *= event.scaleX;
+			img.scaleY *= event.scaleY;
+		});
+	</s:creationComplete>
+	
+	<s:Image id="img" source="@Embed('air-logo.jpg')"/>
+	
+</s:Group>

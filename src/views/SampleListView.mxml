@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<fx:Script>
+			import mx.collections.ArrayList;
+			
+			import spark.components.Button;
+			import spark.components.Label;
+			import spark.primitives.BitmapImage;
+		
+			[Embed(source="/icons/header_logo.png")] private var headerLogo:Class;
+	</fx:Script>
+	
+	<s:viewActivate>
+		l.dataProvider = new ArrayList((Model.getInstance().currentItem as SampleCategory).samples);
+		if (Model.getInstance().currentItem == Model.getInstance().samples)
+		{
+			var bi:BitmapImage = new BitmapImage();
+			bi.source = new headerLogo();
+			titleContent = [bi];
+			
+			var ab:Button = new Button();
+			ab.label = "About";
+			ab.addEventListener(MouseEvent.CLICK, function(event:MouseEvent):void {
+				navigator.pushView(views.AboutView);
+			});
+			actionContent = [ab];
+		}
+		else
+		{
+			var bb:Button = new Button();
+			bb.label = "Back";
+			bb.addEventListener(MouseEvent.CLICK, function(event:MouseEvent):void {
+				var ke:KeyboardEvent = new KeyboardEvent(KeyboardEvent.KEY_UP, true, false, 0, Keyboard.BACK);
+				dispatchEvent(ke);
+			});
+			navigationContent = [bb];
+		
+			var tl:Label = new Label();
+			tl.text = Model.getInstance().currentItem.name;
+			titleContent = [tl]; 
+		
+			actionContent = [];
+		}
+	</s:viewActivate>
+	
+	<s:List id="l" width="100%" height="100%" labelField="name">
+		<s:change>
+			Model.getInstance().currentItem = l.selectedItem;
+			
+			if (l.selectedItem is SampleCategory)
+			{
+				navigator.pushView(SampleListView);
+			}
+			else if (l.selectedItem is SampleItem)
+			{
+				navigator.pushView(SampleView);
+			}
+		</s:change>
+	</s:List>
+	
+</s:View>

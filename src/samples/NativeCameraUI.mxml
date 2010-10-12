@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark">
+
+	<s:layout>	<s:VerticalLayout/></s:layout>
+	
+	<s:Button label="Snap photo">
+		<s:click>
+			if (CameraUI.isSupported)
+			{
+				var cameraUI:CameraUI = new CameraUI();
+				cameraUI.addEventListener(MediaEvent.COMPLETE, function(event:MediaEvent):void {
+					i.source = event.data.file.url;
+				});
+				cameraUI.launch(MediaType.IMAGE);
+			}
+			else
+			{
+				l.text = "CameraUI not supported";
+			}
+		</s:click>
+	</s:Button>
+
+	<s:Label id="l"/>
+	<s:Image id="i" width="100%" height="100%"/>
+	
+</s:Group>

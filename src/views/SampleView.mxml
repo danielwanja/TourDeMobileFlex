@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<fx:Script>
+			import spark.components.Group;
+		
+		
+	</fx:Script>
+	
+	<s:navigationContent>
+		<s:Button label="Back">
+			<s:click>				
+			var ke:KeyboardEvent = new KeyboardEvent(KeyboardEvent.KEY_UP, true, false, 0, Keyboard.BACK);
+			dispatchEvent(ke);
+			</s:click>
+		</s:Button>
+	</s:navigationContent>
+	
+	<s:actionContent>
+		<s:Button label="Source">
+			<s:click>
+				navigator.pushView(SampleCodeView);
+			</s:click>
+		</s:Button>
+	</s:actionContent>
+	
+	<s:viewActivate>
+		title = Model.getInstance().currentItem.name;
+
+		var c:Class = Model.getInstance().currentItem.resource;
+		var actualSample:Group = new c();
+		actualSample.percentWidth = 100;
+		actualSample.percentHeight = 100;
+		addElement(actualSample);
+	</s:viewActivate>
+	
+</s:View>

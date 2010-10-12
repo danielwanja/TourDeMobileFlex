@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	
+	<s:Button label="Pick a Photo from the Roll">
+		<s:click>
+			if (CameraRoll.supportsBrowseForImage)
+			{
+				var cameraRoll:CameraRoll = new CameraRoll();
+				cameraRoll.addEventListener(MediaEvent.SELECT, function(event:MediaEvent):void {
+					i.source = event.data.file.url;
+				});	
+				cameraRoll.browseForImage();
+			}
+			else
+			{
+				l.text = "CameraRoll not supported";
+			}
+		</s:click>
+	</s:Button>
+	
+	<s:Button label="Add a Photo to the Roll">
+		<s:click>
+			if (CameraRoll.supportsAddBitmapData)
+			{
+				var cameraRoll:CameraRoll = new CameraRoll();
+				var bd:BitmapData = new BitmapData(640, 480);
+				bd.perlinNoise(640, 480, 1, Math.floor(Math.random() * 10), false, true);
+				i.source = bd;
+				cameraRoll.addBitmapData(bd);
+			}
+			else
+			{
+				l.text = "CameraRoll not supported";
+			}
+		</s:click>
+	</s:Button>
+	
+	<s:Label id="l"/>
+	
+	<s:Image id="i" width="100%" height="100%"/>
+	
+</s:Group>

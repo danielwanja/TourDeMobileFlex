@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		  xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<fx:Script>
+		[Bindable] private var l:String;
+	</fx:Script>
+	
+	<s:addedToStage>
+		l = "Device Orientation = " + stage.deviceOrientation;
+		stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGE, function(event:StageOrientationEvent):void {
+			l = "Device Orientation = " + stage.deviceOrientation;
+		});
+	</s:addedToStage>
+	
+	<s:Label text="{l}"/>
+	<s:Button label="go landscape">
+		<s:click>
+			stage.setAspectRatio(StageAspectRatio.LANDSCAPE);
+		</s:click>
+	</s:Button>
+	<s:Button label="go portrait">
+		<s:click>
+			stage.setAspectRatio(StageAspectRatio.PORTRAIT);
+		</s:click>
+	</s:Button>
+	
+</s:VGroup>
