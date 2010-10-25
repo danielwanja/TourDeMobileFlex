@@ -1,67 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark">
-	
-	<fx:Script>
-		import mx.core.UIComponent;
-		import spark.components.Label;
-		
-		private var circles:Object = new Object();
-	</fx:Script>
-	
-	<fx:Declarations>
-		<fx:Component className="Circle">
-			<s:Ellipse width="140" height="140">
-				<s:fill>
-					<s:SolidColor color="#ff0000"/>
-				</s:fill>
-			</s:Ellipse>
-		</fx:Component>
-	</fx:Declarations>	
-	
-	<s:creationComplete>
-		Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
-		
-		if (Multitouch.supportsTouchEvents)
-		{
-		l.text = "maxTouchPoints = " + Multitouch.maxTouchPoints;
-		
-		this.addEventListener(TouchEvent.TOUCH_BEGIN, function(event:TouchEvent):void {
-		var c:Circle = new Circle();
-		c.x = event.localX - 70;
-		c.y = event.localY - 70;
-		addElement(c);
-		circles[event.touchPointID] = c;
-		});
-		this.addEventListener(TouchEvent.TOUCH_MOVE, function(event:TouchEvent):void {
-		if (circles[event.touchPointID] != null)
-		{
-		circles[event.touchPointID].x = event.localX - 70;
-		circles[event.touchPointID].y = event.localY - 70;
-		}
-		else
-		{
-		l.text = "couldn't find " + event.touchPointID;
-		}
-		});
-		this.addEventListener(TouchEvent.TOUCH_END, function(event:TouchEvent):void {
-		if (circles[event.touchPointID] != null)
-		{
-		removeElement(circles[event.touchPointID]);
-		delete circles[event.touchPointID];
-		}
-		else
-		{
-		l.text = "couldn't find " + event.touchPointID;
-		}
-		});
-		}
-		else
-		{
-		l.text = "MultiTouch is not supported on this device";
-		}
-	</s:creationComplete>
-	
-	<s:Label id="l" paddingTop="10"/>
-	
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:s="library://ns.adobe.com/flex/spark">
+
+  <fx:Script>
+    import mx.core.UIComponent;
+    import spark.components.Label;
+
+    private var circles:Object = new Object();
+  </fx:Script>
+
+  <fx:Declarations>
+    <fx:Component className="Circle">
+      <s:Ellipse width="140" height="140">
+        <s:fill>
+          <s:SolidColor color="#ff0000"/>
+        </s:fill>
+      </s:Ellipse>
+    </fx:Component>
+  </fx:Declarations>
+
+  <s:creationComplete>
+      Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
+
+      if (Multitouch.supportsTouchEvents)
+      {
+        l.text = "maxTouchPoints = " + Multitouch.maxTouchPoints;
+
+        addEventListener(TouchEvent.TOUCH_BEGIN, function(event:TouchEvent):void {
+          var c:Circle = new Circle();
+          c.x = event.localX - 70;
+          c.y = event.localY - 70;
+          addElement(c);
+          circles[event.touchPointID] = c;
+        });
+        addEventListener(TouchEvent.TOUCH_MOVE, function(event:TouchEvent):void {
+          if (circles[event.touchPointID] != null)
+          {
+            circles[event.touchPointID].x = event.localX - 70;
+            circles[event.touchPointID].y = event.localY - 70;
+          }
+        });
+        addEventListener(TouchEvent.TOUCH_END, function(event:TouchEvent):void {
+          if (circles[event.touchPointID] != null)
+          {
+            removeElement(circles[event.touchPointID]);
+            delete circles[event.touchPointID];
+          }
+        });
+        addEventListener(TouchEvent.TOUCH_OUT, function(event:TouchEvent):void {
+          if (circles[event.touchPointID] != null)
+          {
+            removeElement(circles[event.touchPointID]);
+            delete circles[event.touchPointID];
+          }
+        });
+      }
+      else
+      {
+        l.text = "MultiTouch is not supported on this device";
+      }
+  </s:creationComplete>
+
+  <s:Label id="l" paddingTop="10"/>
+
 </s:Group>

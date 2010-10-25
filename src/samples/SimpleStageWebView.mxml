@@ -3,14 +3,24 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark">
 	
 	<fx:Script>
-		import mx.events.FlexEvent;
-		import spark.components.View;
-		protected var swv:StageWebView;
-	</fx:Script>
+    import mx.events.FlexEvent;
+
+    import spark.components.View;
+
+    protected var swv:StageWebView;
+
+    private function resizeSWV():void
+    {
+      if (swv != null)
+      {
+        swv.viewPort = new Rectangle(0, stage.height - height, width, height);
+      }
+    }
+  </fx:Script>
 	
 	<s:creationComplete>
 		swv = new StageWebView();					
-		swv.viewPort = new Rectangle(0, stage.height - height, width, height);
+    resizeSWV();
 		swv.stage = stage;
 		swv.loadURL("http://www.flex.org");
 		
@@ -18,5 +28,9 @@
 			swv.dispose();
 		});
 	</s:creationComplete>
+
+  <s:resize>
+    resizeSWV();
+  </s:resize>
 	
 </s:Group>

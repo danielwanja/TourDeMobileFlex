@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark">
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+     paddingTop="20" paddingLeft="20" paddingRight="20">
 
 	<fx:Script>
 		import flash.sensors.Geolocation;
+
+    protected var g:Geolocation;
 	</fx:Script>
 	
 	<s:creationComplete>
 		if (Geolocation.isSupported)
 		{
-			var g:Geolocation = new Geolocation();
+			g = new Geolocation();
 			
 			if (g.muted)
 			{
@@ -28,14 +31,18 @@
 				"\nspeed = " + event.speed +
 				"\nheading = " + event.heading +
 				"\ntimestamp = " + event.timestamp;
-			});
+			}, false, 0, true);
 		}
 		else
 		{
 			l.text = "Geolocation is not supported on this device";
 		}
 	</s:creationComplete>
+
+  <s:removedFromStage>
+    g = null;
+  </s:removedFromStage>
 	
 	<s:Label id="l"/>
 	
-</s:Group>
+</s:VGroup>

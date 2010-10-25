@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark">
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
+          xmlns:s="library://ns.adobe.com/flex/spark" paddingTop="20" paddingLeft="20" paddingRight="20" paddingBottom="20">
 
-	<fx:Script>
-		import mx.collections.ArrayCollection;
-		public var sqlConnection:SQLConnection;
+  <fx:Script>
+    import mx.collections.ArrayCollection;
 
-		public function getAllGiberish():void
-		{
-			var stmt:SQLStatement = new SQLStatement();
-			stmt.sqlConnection = sqlConnection;
-			stmt.text = "SELECT label FROM giberish";
-			stmt.execute();
-			l.dataProvider = new ArrayCollection(stmt.getResult().data);
-		}
-	</fx:Script>
-	
-	<s:creationComplete>
-		sqlConnection = new SQLConnection();
-		sqlConnection.open(File.applicationStorageDirectory.resolvePath("giberish.db"));
-		var stmt:SQLStatement = new SQLStatement();
-		stmt.sqlConnection = sqlConnection;
-		stmt.text = "CREATE TABLE IF NOT EXISTS giberish (label TEXT)";
-		stmt.execute();
-		getAllGiberish();
-	</s:creationComplete>
-		
-	<s:Form width="100%">
-		<s:FormItem label="Giberish" skinClass="spark.skins.spark.StackedFormItemSkin">
-			<s:TextInput id="g"/>
-		</s:FormItem>
-		<s:Button label="Add Giberish" enabled="{g.text.length != 0}">
-			<s:click>
-				var stmt:SQLStatement = new SQLStatement();
-				stmt.sqlConnection = sqlConnection;
-				stmt.text = "INSERT into giberish values(:giberish)";
-				stmt.parameters[":giberish"] = g.text;
-				stmt.execute();
-				getAllGiberish();
-				g.text = "";
-			</s:click>
-		</s:Button>
-	</s:Form>
+    public var sqlConnection:SQLConnection;
 
-	<s:List id="l" width="100%" height="100%"/>
-	
+    public function getAllGiberish():void {
+      var stmt:SQLStatement = new SQLStatement();
+      stmt.sqlConnection = sqlConnection;
+      stmt.text = "SELECT label FROM giberish";
+      stmt.execute();
+      l.dataProvider = new ArrayCollection(stmt.getResult().data);
+    }
+  </fx:Script>
+
+  <s:creationComplete>
+      sqlConnection = new SQLConnection();
+      sqlConnection.open(File.applicationStorageDirectory.resolvePath("giberish.db"));
+      var stmt:SQLStatement = new SQLStatement();
+      stmt.sqlConnection = sqlConnection;
+      stmt.text = "CREATE TABLE IF NOT EXISTS giberish (label TEXT)";
+      stmt.execute();
+      getAllGiberish();
+  </s:creationComplete>
+
+  <s:Label text="Enter some giberish:"/>
+  <s:TextInput id="g" width="400"/>
+
+  <s:Button label="Save Giberish" enabled="{g.text.length != 0}">
+    <s:click>
+        var stmt:SQLStatement = new SQLStatement();
+        stmt.sqlConnection = sqlConnection;
+        stmt.text = "INSERT into giberish values(:giberish)";
+        stmt.parameters[":giberish"] = g.text;
+        stmt.execute();
+        getAllGiberish();
+        g.text = "";
+    </s:click>
+  </s:Button>
+
+  <s:Label text="Saved Giberish:" paddingTop="20"/>
+
+  <s:List id="l" width="100%" height="100%"/>
+
 </s:VGroup>

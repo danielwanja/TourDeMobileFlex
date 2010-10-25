@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+
+  <fx:Declarations>
+    <s:RemoteObject id="ro" destination="census" endpoint="http://www.jamesward.com/census2-tests/messagebroker/amf?id=flex_amf3&amp;gzip=true">
+      <s:result>
+          startRenderTime = new Date().time;
+          requestTime = startRenderTime - startRequestTime;
+          dg.dataProvider = new ArrayCollection(event.result as Array);
+      </s:result>
+    </s:RemoteObject>
+  </fx:Declarations>
+
+  <fx:Script>
+    import mx.collections.ArrayCollection;
+    import mx.events.FlexEvent;
+
+    private var startRequestTime:Number;
+    private var startRenderTime:Number;
+    private var requestTime:Number = 0;
+    private var renderTime:Number = 0;
+  </fx:Script>
+
+  <s:Label text="Load some data:"/>
+
+  <s:ButtonBar id="bb" width="100%" fontSize="24" selectedIndex="-1" height="50">
+    <s:dataProvider>
+      <s:ArrayCollection>
+        <fx:Object label="2000 rows" data="2000"/>
+        <fx:Object label="5000 rows" data="5000"/>
+        <fx:Object label="20000 rows" data="20000"/>
+      </s:ArrayCollection>
+    </s:dataProvider>
+    <s:change>
+        if (bb.selectedItem != null)
+        {
+          requestTime = 0;
+          renderTime = 0;
+
+          l.text = "Test Running...";
+
+          dg.dataProvider = new ArrayCollection();
+
+          startRequestTime = new Date().time;
+          ro.getElements(0, bb.selectedItem.data);
+        }
+    </s:change>
+  </s:ButtonBar>
+
+  <s:Label id="l" fontSize="18"/>
+
+  <s:DataGrid id="dg" width="100%" height="100%" fontSize="20" variableRowHeight="false" lineBreak="explicit" selectionMode="none">
+    <s:creationComplete><![CDATA[
+        dg.skin['grid'].addEventListener(FlexEvent.UPDATE_COMPLETE, function(event:FlexEvent):void {
+          if ((requestTime != 0) && (renderTime == 0))
+          {
+            var now:Number = new Date().time;
+
+            renderTime = now - startRenderTime;
+
+            l.text = "Request Time = " + requestTime + "ms | Render Time = " + renderTime + "ms";
+          }
+        });
+      ]]></s:creationComplete>
+    <s:columns>
+      <s:ArrayList>
+        <s:GridColumn dataField="id"/>
+        <s:GridColumn dataField="age"/>
+        <s:GridColumn dataField="classOfWorker"/>
+        <s:GridColumn dataField="education"/>
+        <s:GridColumn dataField="maritalStatus"/>
+        <s:GridColumn dataField="race"/>
+        <s:GridColumn dataField="sex"/>
+      </s:ArrayList>
+    </s:columns>
+  </s:DataGrid>
+
+</s:VGroup>

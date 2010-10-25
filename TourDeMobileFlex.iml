@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="Flex" version="4">
+  <component name="Flex.Build.Configuration">
+    <option name="DO_BUILD" value="true" />
+    <option name="USE_DEFAULT_SDK_CONFIG_FILE" value="false" />
+    <option name="USE_CUSTOM_CONFIG_FILE" value="true" />
+    <option name="CUSTOM_CONFIG_FILE" value="$USER_HOME$/flex_sdk_4.5.0.17689/frameworks/airmobile-config.xml" />
+    <option name="MAIN_CLASS" value="TourDeMobileFlex" />
+    <option name="OUTPUT_FILE_NAME" value="TourDeMobileFlex.swf" />
+    <option name="TARGET_PLAYER_VERSION" value="10.1" />
+    <option name="ADDITIONAL_COMPILER_OPTIONS" value="-compiler.source-path=src -output /home/jamesw/projects/TourDeMobileFlex/out/production/TourDeMobileFlex/TourDeMobileFlex.swf src/TourDeMobileFlex.mxml" />
+    <option name="VERSION" value="3" />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="flex_sdk_4.5.0.17689 AIR" jdkType="AIR SDK Type" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/flex_sdk_4.5.0.17689/frameworks/libs/mobile/mobilecomponents.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/IBM/ILOG/Elixir_Enterprise_3.0_Trial/frameworks/libs/ilog-elixir-enterprise.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/IBM/ILOG/Elixir_Enterprise_3.0_Trial/frameworks/locale/en_US/ilog-elixir-enterprise_rb.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+

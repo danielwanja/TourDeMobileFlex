@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+///////////////////////////////////////////////////////////////////////////////
+// Licensed Materials - Property of IBM
+// 5724-Y31,5724-Z78
+// © Copyright IBM Corporation 2007, 2010. All Rights Reserved.
+//
+// Note to U.S. Government Users Restricted Rights:
+// Use, duplication or disclosure restricted by GSA ADP Schedule
+// Contract with IBM Corp.
+///////////////////////////////////////////////////////////////////////////////
+-->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009"
+             xmlns:s="library://ns.adobe.com/flex/spark"
+             xmlns:ibm="http://www.ibm.com/xmlns/prod/ilog/elixir/2010"
+             xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+             alpha.disabled="0.5"
+             xmlns:ilog="http://www.ilog.com/2007/ilog/flex">
+  <fx:Metadata>
+    [HostComponent("com.ibm.ilog.elixir.maps.components.WorldCountriesMercatorMap")]
+  </fx:Metadata>
+  <fx:Script>
+    <![CDATA[
+      import com.ibm.ilog.elixir.maps.layouts.MapComponentLayout;
+      import com.ibm.ilog.elixir.maps.supportClasses.MapBase;
+
+      import flash.utils.setTimeout;
+
+      import mx.core.FlexGlobals;
+      import mx.events.FlexEvent;
+      import mx.events.ResizeEvent;
+      import mx.managers.LayoutManager;
+      import mx.utils.UIDUtil;
+
+      import spark.components.Group;
+      import spark.components.supportClasses.GroupBase;
+
+      static private const exclusions:Array = ["background", "scroller"];
+
+      override public function get colorizeExclusions():Array {
+        return exclusions;
+      }
+
+      [Bindable]
+      private var ulLat:Number;
+      [Bindable]
+      private var ulLon:Number;
+      [Bindable]
+      private var lrLat:Number;
+      [Bindable]
+      private var lrLon:Number;
+
+      private function gotLayerExtent():void {
+        var r:Rectangle = featureGroup.layerExtent;
+        var ul:Point = new Point(r.x, r.y);
+        var lr:Point = new Point(r.x + r.width, r.y + r.height);
+        ul = featureGroup.mapToLongLat(ul);
+        lr = featureGroup.mapToLongLat(lr);
+        ulLat = ul.y;
+        ulLon = ul.x;
+        lrLat = lr.y;
+        lrLon = lr.x;
+      }
+
+      private function drawRAWPoints(group:GroupBase):void {
+/*        var g:Graphics = group.graphics;
+        g.clear();
+        var p:Point;
+        var data:Object = heatmap(FlexGlobals.topLevelApplication).dataProxy.data;
+        for each (var o:Object in data) {
+          g.beginFill(0xFFFFFF, 0.5);
+          p = new Point(o.lon, o.lat);
+          p = hostComponent.longLatToMap(p);
+          p = hostComponent.featureGroup.localToGlobal(p);
+          p = group.globalToLocal(p);
+          g.drawCircle(p.x, p.y, 0.5);
+        }*/
+      }
+
+      private function featureGroupDataChangeHandler(event:FlexEvent):void {
+        gotLayerExtent();
+      }
+
+      private function setHeatMapDataProvider():void {
+        var ret:Array = [];
+        for each (var o:Object in FlexGlobals.topLevelApplication.dataProxy.data) {
+          var p:Point = featureGroup.longLatToMap(new Point(o.lon, o.lat));
+          p = featureGroup.localToGlobal(p);
+          p = hm.globalToLocal(p);
+          ret.push(p);
+        }
+        hm.dataProvider = ret;
+      }
+
+    ]]>
+  </fx:Script>
+
+  <!-- states -->
+  <s:states>
+    <s:State name="normal"/>
+    <s:State name="disabled"/>
+  </s:states>
+
+  <!-- border and background -->
+  <!--- @private -->
+  <!--- @private -->
+  <s:Rect id="background"
+          depth="-100"
+          left="1"
+          right="1"
+          top="1"
+          bottom="1">
+    <s:fill>
+      <s:LinearGradient rotation="90">
+        <s:entries>
+          <s:GradientEntry color="0x000000"/>
+          <s:GradientEntry color="0x222222"/>
+        </s:entries>
+      </s:LinearGradient>
+    </s:fill>
+  </s:Rect>
+
+  <!--- The Scroller component to navigate into the map and add scroll bars to the map. -->
+  <ibm:Scroller verticalScrollPolicy="off"
+                horizontalScrollPolicy="off"
+                reticleColor="0x706050"
+                wheelZoomModifierKey="none"
+                panModifierKey="none"
+                width="100%"
+                height="100%"
+                id="scroller"
+                zoomDuration="250"
+                translationDuration="250"
+                skinClass="com.ibm.ilog.elixir.skins.spark.ScrollerSkin">
+    <!--- The layer container -->
+    <ibm:MapGroup id="mapGroup"
+                  startActionFunction="{null}"
+                  endActionFunction="{null}"
+                  color="red">
+      <!--- The layer holding map features -->
+      <ibm:MapFeatureGroup id="featureGroup"
+                           dataChange="featureGroupDataChangeHandler(event)"
+                           featureRenderer="com.ibm.ilog.elixir.maps.skins.spark.DefaultFeatureRenderer"/>
+      <ibm:MapComponentGroup upperLeftLatitude="{ulLat}"
+                             upperLeftLongitude="{ulLon}"
+                             lowerRightLatitude="{lrLat}"
+                             lowerRightLongitude="{lrLon}"
+                             resizePolicy="scale"
+                             zoomable="true"
+                             id="componentGroup">
+        <ilog:DensityHeatMap id="hm"
+                             width="300"
+                             height="200"
+                             doubleBuffer="false"
+                             pointSize="8"
+                             pointValue="9"
+                             smooth="true"
+                             creationComplete="setHeatMapDataProvider()">
+          <ilog:colorModel>
+            <ilog:ColorModel>
+              <ilog:ColorEntry color="0x0000ff"
+                               limit="0"
+                               alpha="0"/>
+              <ilog:ColorEntry color="0xffa500"
+                               limit="50"
+                               alpha="0.5"/>
+              <ilog:ColorEntry color="0xff0000"
+                               limit="255"
+                               alpha="1"/>
+            </ilog:ColorModel>
+          </ilog:colorModel>
+        </ilog:DensityHeatMap>
+      </ibm:MapComponentGroup>
+      <ibm:MapLayerGroup id="drawingGroup"
+                         drawingFunction="drawRAWPoints"/>
+    </ibm:MapGroup>
+  </ibm:Scroller>
+</s:SparkSkin>
