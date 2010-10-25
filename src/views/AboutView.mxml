@@ -17,14 +17,14 @@
 	</s:layout>
 	
 	<s:Label text="Learn more about Tour de Flex:"/>
-	<s:Button label="flex.org/tour" click="navigateToURL(new URLRequest('http://flex.org/tour'))"/>
+	<s:Button label="flex.org/tour" click="navigateToURL(new URLRequest('http://flex.org/tour'))" width="300"/>
 	
 	<mx:Spacer height="10"/>
 	
 	<s:Label text="Developed by:"/>
-	<s:Button label="Greg Wilson" click="navigateToURL(new URLRequest('http://gregsramblings.com'))"/>
-	<s:Button label="Christophe Coenraets" click="navigateToURL(new URLRequest('http://coenraets.org'))"/>
-	<s:Button label="James Ward" click="navigateToURL(new URLRequest('http://jamesward.com'))"/>
+	<s:Button label="Greg Wilson" click="navigateToURL(new URLRequest('http://gregsramblings.com'))" width="300"/>
+	<s:Button label="Christophe Coenraets" click="navigateToURL(new URLRequest('http://coenraets.org'))" width="300"/>
+	<s:Button label="James Ward" click="navigateToURL(new URLRequest('http://jamesward.com'))" width="300"/>
 
 	<mx:Spacer height="10"/>
 	<s:Label text="©2010 Adobe Systems Incorporated. All rights reserved. The Adobe logo and Flex are registered trademarks of Adobe Systems Incorporated in the United States and/or other countries." width="100%"/>			

@@ -1,45 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="Tour de Mobile Flex">
 
-  <property name="FLEX_HOME" value="/home/jamesw/flex_sdk_4.5.0.17689"/>
-  <property name="ANDROID_HOME" value="/home/jamesw/android/android-sdk-linux_86"/>
+  <property file="build.properties"/>
 
   <taskdef name="mxmlc" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" classname="flex.ant.MxmlcTask"/>
-
 
   <property name="out.dir" value="out/release"/>
 
   <target name="compile">
     <mkdir dir="${out.dir}"/>
 
-    <mxmlc file="src/TourDeMobileFlex.mxml" output="${out.dir}/TourDeMobileFlex.swf" optimize="true" configname="airmobile">
+    <mxmlc file="src/TourDeMobileFlex.mxml" output="${out.dir}/TourDeMobileFlex.swf"
+           optimize="true" configname="airmobile" debug="false">
       <source-path path-element="src"/>
     </mxmlc>
   </target>
 
-  <target name="package" depends="compile">
-    <copy file="src/TourDeMobileFlex-app.xml" todir="${out.dir}"/>
+  <target name="createHtmlSamples">
+    <mkdir dir="${out.dir}/codesamples"/>
+    <exec executable="/usr/bin/php">
+      <arg value="codeHighlight.php"/>
+      <arg value="--sourcedir=src/samples"/>
+      <arg value="--outputdir=${out.dir}/codesamples"/>
+    </exec>
+  </target>
+
+  <target name="prepackage">
     <copy todir="${out.dir}/icons">
       <fileset dir="src/icons"/>
     </copy>
+  </target>
+
+  <target name="package-apk" depends="compile,createHtmlSamples,prepackage">
+    <copy file="src/TourDeMobileFlex-apk.xml" todir="${out.dir}"/>
+
     <java jar="${FLEX_HOME}/lib/adt.jar" fork="true" failonerror="true" dir="${out.dir}">
         <arg value="-package"/>
         <arg value="-target"/>
-        <arg value="apk"/>
+        <arg value="apk-debug"/>
         <arg value="-storetype"/>
-        <arg value="pkcs12"/>
+        <arg value="${STORETYPE}"/>
         <arg value="-keystore"/>
-        <arg value="/home/jamesw/a.p12"/>
+        <arg value="${KEYSTORE}"/>
         <arg value="-storepass"/>
-        <arg value="a"/>
+        <arg value="${STOREPASS}"/>
         <arg value="TourDeMobileFlex.apk"/>
-        <arg value="TourDeMobileFlex-app.xml"/>
+        <arg value="TourDeMobileFlex-apk.xml"/>
         <arg value="TourDeMobileFlex.swf"/>
         <arg value="icons"/>
+        <arg value="codesamples"/>
     </java>
+
   </target>
 
-  <target name="install" depends="package">
+  <target name="install-apk" depends="package-apk">
     <exec executable="${ANDROID_HOME}/tools/adb">
       <arg value="install"/>
       <arg value="-r"/>

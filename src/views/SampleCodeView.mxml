@@ -2,18 +2,44 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark">
 
-	<s:viewActivate>
-		title = Model.getInstance().currentItem.name;
-	</s:viewActivate>
-	
-	<s:navigationContent>
+
+  <fx:Script>
+		protected var swv:StageWebView;
+
+    protected function updateSWVSize():void
+    {
+      if (swv != null)
+      {
+        swv.viewPort = new Rectangle(0, stage.height - height + 35, width, height - 35);
+      }
+    }
+	</fx:Script>
+
+  <s:navigationContent>
 		<s:Button label="Back" click="navigator.popView()"/>
 	</s:navigationContent>
-	
-	<s:actionContent>
-		<s:Button label="Email It">
-			
-		</s:Button>
-	</s:actionContent>
+
+	<s:add>
+		title = Model.getInstance().currentItem.name;
+  </s:add>
+
+  <s:viewActivate>  
+    swv = new StageWebView();
+    updateSWVSize();
+		swv.stage = stage;
+    var cName:String = (Model.getInstance().currentItem.resource as Class).toString();
+    cName = cName.substring(7, cName.length - 1);
+		swv.loadURL("file:///android_asset/codesamples/" + cName + ".html");
+	</s:viewActivate>
+
+  <s:removing>
+    swv.dispose();
+  </s:removing>
+
+  <s:resize>
+    updateSWVSize();
+  </s:resize>
+
+  <s:Label text="Download this sample: flex.org/tdmf" height="35" paddingTop="7"/>
 	
 </s:View>

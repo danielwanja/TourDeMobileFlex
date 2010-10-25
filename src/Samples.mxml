@@ -1,48 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SampleCategory xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns="*" name="Tour de Mobile Flex">
-	<samples>
-		<SampleCategory name="Mobile Components">
-			<samples>
-					<SampleItem name="List" resource="samples.SimpleList"/>
-					<SampleItem name="Form" resource="samples.SimpleForm"/>
-					<SampleItem name="StageWebView" resource="samples.SimpleStageWebView"/>
-			</samples>
-		</SampleCategory>
-		
-		<SampleCategory name="Mobile APIs">
-			<samples>
-					<SampleCategory name="Multitouch/Gestures">
-						<samples>
-							<SampleItem name="Multiple Touch Points" resource="samples.MultiTouch"/>
-							<SampleItem name="Gesture Zoom" resource="samples.GestureZoom"/>
-							<!--<SampleItem name="Gesture Swipe" resource="samples.GestureSwipe"/>-->
-						</samples>
-					</SampleCategory>
-				    <SampleCategory name="Camera">
-						<samples>
-							<SampleItem name="Raw Camera" resource="samples.RawCamera"/>
-							<SampleItem name="CameraUI" resource="samples.NativeCameraUI"/>
-							<SampleItem name="CameraRoll" resource="samples.NativeCameraRoll"/>
-						</samples>
-					</SampleCategory>
-					<SampleCategory name="Screen Management">
-						<samples>
-							<SampleItem name="Full Screen" resource="samples.FullScreen"/>
-							<SampleItem name="Rotate Screen" resource="samples.RotateScreen"/>
-						</samples>
-					</SampleCategory>
-					<SampleItem name="Accelerometer" resource="samples.SimpleAccelerometer"/>
-					<SampleItem name="Database" resource="samples.SimpleDB"/>
-					<SampleItem name="GPS" resource="samples.SimpleGPS"/>
-					<SampleItem name="Native App Integration" resource="samples.NativeAppIntegration"/>
-			</samples>
-		</SampleCategory>
-		
-<!--		<SampleCategory name="Demos">
-			<samples>
-				<SampleItem name="Tour de Flex Dashboard" resource="samples.MiniTourDeDashboard"/>
-			</samples>
-		</SampleCategory>-->
+  <samples>
+    <SampleItem name="Mobile App Anatomy" resource="samples.MobileAppAnatomy" icon="@Embed('icons/samples/code-context.png')"/>
 
-	</samples>
+    <SampleCategory name="Lists" icon="@Embed('icons/samples/view-sort-ascending.png')">
+      <samples>
+        <SampleItem name="Standard List" resource="samples.SimpleList" icon="@Embed('icons/samples/view-sort-ascending.png')"/>
+        <SampleItem name="MobileItemRenderer" resource="samples.SimpleMobileItemRenderer" icon="@Embed('icons/samples/view-sort-ascending.png')"/>
+        <SampleItem name="MobileIconItemRenderer" resource="samples.SimpleMobileIconItemRenderer" icon="@Embed('icons/samples/view-sort-ascending.png')"/>
+      </samples>
+    </SampleCategory>
+
+    <SampleCategory name="Data Entry Controls" icon="@Embed('icons/samples/view-form.png')">
+      <samples>
+        <SampleItem name="TextInput" resource="samples.SimpleTextInput" icon="@Embed('icons/samples/text_input.png')"/>
+        <SampleItem name="TextArea" resource="samples.SimpleTextArea" icon="@Embed('icons/samples/insert-text.png')"/>
+        <SampleItem name="Radio Buttons" resource="samples.SimpleRadioButton" icon="@Embed('icons/samples/radiobuttons.png')"/>
+        <SampleItem name="Checkbox" resource="samples.SimpleCheckbox" icon="@Embed('icons/samples/checkbox.png')"/>
+      </samples>
+    </SampleCategory>
+
+    <SampleItem name="StageWebView" resource="samples.SimpleStageWebView" icon="@Embed('icons/samples/web-browser.png')"/>
+
+    <SampleCategory name="Multitouch/Gestures" icon="@Embed('icons/samples/input-touchpad.png')">
+      <samples>
+        <SampleItem name="Multiple Touch Points" resource="samples.MultiTouch" icon="@Embed('icons/samples/input-touchpad.png')"/>
+        <SampleItem name="Gesture Zoom" resource="samples.GestureZoom" icon="@Embed('icons/samples/input-touchpad.png')"/>
+        <SampleItem name="Gesture Swipe" resource="samples.GestureSwipe" icon="@Embed('icons/samples/input-touchpad.png')"/>
+        <SampleItem name="Gesture Pan" resource="samples.GesturePan" icon="@Embed('icons/samples/input-touchpad.png')"/>
+        <SampleItem name="Gesture Rotate" resource="samples.GestureRotate" icon="@Embed('icons/samples/input-touchpad.png')"/>
+        <!--<SampleItem name="Gesture PressAndTap" resource="samples.GesturePressAndTap"/>-->
+      </samples>
+    </SampleCategory>
+
+    <SampleCategory name="Camera" icon="@Embed('icons/samples/camera.png')">
+      <samples>
+        <SampleItem name="Raw Camera" resource="samples.RawCamera" icon="@Embed('icons/samples/camera.png')"/>
+        <SampleItem name="CameraUI" resource="samples.NativeCameraUI" icon="@Embed('icons/samples/camera.png')"/>
+        <SampleItem name="CameraRoll" resource="samples.NativeCameraRoll" icon="@Embed('icons/samples/emblem-photos.png')"/>
+      </samples>
+    </SampleCategory>
+
+    <SampleCategory name="Screen Management" icon="@Embed('icons/samples/gtk-fullscreen.png')">
+      <samples>
+        <SampleItem name="Full Screen" resource="samples.FullScreen" icon="@Embed('icons/samples/gtk-fullscreen.png')"/>
+        <SampleItem name="Rotate Screen" resource="samples.RotateScreen" icon="@Embed('icons/samples/transform-rotate.png')"/>
+      </samples>
+    </SampleCategory>
+
+    <SampleItem name="Accelerometer" resource="samples.SimpleAccelerometer" icon="@Embed('icons/samples/ac.png')"/>
+    <SampleItem name="Local Database" resource="samples.SimpleDB" icon="@Embed('icons/samples/server-database.png')"/>
+    <SampleItem name="GPS" resource="samples.SimpleGPS" icon="@Embed('icons/samples/network-wireless.png')"/>
+    <SampleItem name="Native App Integration" resource="samples.NativeAppIntegration" icon="@Embed('icons/samples/run-build.png')"/>
+
+    <!--			<samples>
+          <SampleItem name="Tour de Flex Dashboard" resource="samples.MiniTourDeDashboard"/>
+        </samples>-->
+
+    <SampleCategory name="Remote Data" icon="@Embed('icons/samples/network-transmit.png')">
+      <samples>
+        <SampleItem name="AMF Remoting" resource="samples.CensusRemoting" icon="@Embed('icons/samples/binary.png')"/>
+      </samples>
+    </SampleCategory>
+
+<!--    <SampleCategory name="Charting">
+      <samples>
+        <SampleItem name="Column Chart" resource="samples.ColumnChart"/>
+      </samples>
+    </SampleCategory>-->
+
+  </samples>
 </SampleCategory>
