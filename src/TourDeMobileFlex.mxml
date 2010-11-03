@@ -15,7 +15,7 @@
 					var newItem:SampleItem =  Model.getInstance().findParent(Model.getInstance().currentItem);
 					if (newItem != null)
 					{
-						Model.getInstance().currentItem = newItem; 
+						Model.getInstance().currentItem = newItem;
 					}
 				}
 				

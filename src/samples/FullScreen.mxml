@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
-		 xmlns:s="library://ns.adobe.com/flex/spark"
-     paddingTop="20" paddingLeft="20" paddingRight="20">
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+     	  paddingTop="20" paddingLeft="20" paddingRight="20">
 
-  <fx:Script>
-    import spark.components.View;
-  </fx:Script>
-
-	<s:addedToStage>
-		<![CDATA[
-		stage.addEventListener(KeyboardEvent.KEY_DOWN, function(event:KeyboardEvent):void {
-			if (event.keyCode == Keyboard.BACK && stage.displayState == StageDisplayState.FULL_SCREEN_INTERACTIVE)
-			{
-				c.selected = false;
-				stage.displayState = StageDisplayState.NORMAL;
-			}
-		});
-		]]>
-	</s:addedToStage>
+	<s:creationComplete>
+		if (stage.displayState == StageDisplayState.FULL_SCREEN_INTERACTIVE)
+		{
+			c.selected = true;
+		}
+	</s:creationComplete>
 	
 	<s:CheckBox id="c" label="Full Screen">
 		<s:change>

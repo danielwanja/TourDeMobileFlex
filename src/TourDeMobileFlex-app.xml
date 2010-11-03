@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <application xmlns="http://ns.adobe.com/air/application/2.5">
 
-	<id>TourDeMobileFlex</id>
+	<id>adobe.flex.TourDeMobileFlex</id>
 	<filename>TourDeMobileFlex</filename>
 	<name>Tour de Mobile Flex</name>
-	<versionNumber>0.1</versionNumber>
+	<versionNumber>1.0.2</versionNumber>
 
 	<initialWindow>
 		<content>TourDeMobileFlex.swf</content>
@@ -22,15 +22,15 @@
 
 	<android>
 		<manifestAdditions><![CDATA[
-	<manifest>
+	<manifest android:installLocation="auto">
 		<uses-permission android:name="android.permission.INTERNET"/>
-	    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-        <uses-permission android:name="android.permission.CAMERA" />
+	  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
         
-        <uses-feature android:name="android.hardware.camera" android:required="true"/>
-        <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
-        <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
 	</manifest>
 ]]></manifestAdditions>
 	</android>

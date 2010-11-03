@@ -1,5 +1,7 @@
 package
 {
+	import flash.utils.Dictionary;
+
 	public class Model
 	{
 		private static var instance:Model;
@@ -16,10 +18,14 @@ package
 		[Bindable] public var samples:SampleCategory;
 		[Bindable] public var currentItem:SampleItem;
 		
+		public var sampleListScrollPositions:Dictionary;
+		
 		public function Model()
 		{
 			samples = new Samples();
 			currentItem = samples;
+			
+			sampleListScrollPositions = new Dictionary(true);
 		}
 		
 		public function findParent(item:SampleItem):SampleCategory

@@ -44,6 +44,7 @@
     <SampleCategory name="Screen Management" icon="@Embed('icons/samples/gtk-fullscreen.png')">
       <samples>
         <SampleItem name="Full Screen" resource="samples.FullScreen" icon="@Embed('icons/samples/gtk-fullscreen.png')"/>
+		<SampleItem name="ActionBar Visibility" resource="samples.ActionBarVisibility" icon="@Embed('icons/samples/gtk-leave-fullscreen.png')"/>
         <SampleItem name="Rotate Screen" resource="samples.RotateScreen" icon="@Embed('icons/samples/transform-rotate.png')"/>
       </samples>
     </SampleCategory>

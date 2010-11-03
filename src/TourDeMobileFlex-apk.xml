@@ -4,7 +4,7 @@
 	<id>adobe.flex.TourDeMobileFlex</id>
 	<filename>TourDeMobileFlex</filename>
 	<name>Tour de Mobile Flex</name>
-	<versionNumber>1.0.1</versionNumber>
+	<versionNumber>1.0.2</versionNumber>
 
 	<initialWindow>
 		<content>TourDeMobileFlex.swf</content>

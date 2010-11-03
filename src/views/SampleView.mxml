@@ -33,6 +33,22 @@
 		actualSample.percentWidth = 100;
 		actualSample.percentHeight = 100;
 		addElement(actualSample);
+		
+		// notify the tdf server about the sample being viewed
+		var urlVariables:URLVariables = new URLVariables();
+		urlVariables.Request = "logView";
+		urlVariables.ObjectId = 0;
+		//urlVariables.ObjectName = Model.getInstance().currentItem.name;
+
+		var urlRequest:URLRequest = new URLRequest("http://tourdeflex.adobe.com/server/main.php");
+		urlRequest.method = URLRequestMethod.POST;
+		urlRequest.data = urlVariables;
+		
+		var urlLoader:URLLoader = new URLLoader();
+		urlLoader.addEventListener(IOErrorEvent.IO_ERROR, function(event:IOErrorEvent):void {
+			// ignore
+		});
+		urlLoader.load(urlRequest);
 	</s:add>
 
   <s:remove>
