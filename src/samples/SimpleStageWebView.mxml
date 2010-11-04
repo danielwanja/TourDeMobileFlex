@@ -22,7 +22,7 @@
 		swv = new StageWebView();					
     resizeSWV();
 		swv.stage = stage;
-		swv.loadURL("http://www.flex.org");
+		swv.loadURL("http://www.google.com");
 		
 		(parent as View).addEventListener(FlexEvent.REMOVING, function(event:FlexEvent):void {
 			swv.dispose();
