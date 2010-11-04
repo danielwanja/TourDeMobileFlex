@@ -37,8 +37,7 @@
 		// notify the tdf server about the sample being viewed
 		var urlVariables:URLVariables = new URLVariables();
 		urlVariables.Request = "logView";
-		urlVariables.ObjectId = 0;
-		//urlVariables.ObjectName = Model.getInstance().currentItem.name;
+		urlVariables.ObjectId = Model.getInstance().currentItem.uid;
 
 		var urlRequest:URLRequest = new URLRequest("http://tourdeflex.adobe.com/server/main.php");
 		urlRequest.method = URLRequestMethod.POST;
