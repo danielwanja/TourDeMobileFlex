@@ -3,34 +3,35 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark">
 	
 	<fx:Script>
-    import mx.events.FlexEvent;
-
-    import spark.components.View;
-
-    protected var swv:StageWebView;
-
-    private function resizeSWV():void
-    {
-      if (swv != null)
-      {
-        swv.viewPort = new Rectangle(0, stage.height - height, width, height);
-      }
-    }
-  </fx:Script>
+		import spark.events.ViewNavigatorEvent;
+		import mx.events.FlexEvent;
+		
+		import spark.components.View;
+		
+		protected var swv:StageWebView;
+		
+		private function resizeSWV():void
+		{
+			if (swv != null)
+			{
+				swv.viewPort = new Rectangle(0, stage.height - height, width, height);
+			}
+		}
+	</fx:Script>
 	
 	<s:creationComplete>
 		swv = new StageWebView();					
-    resizeSWV();
+		resizeSWV();
 		swv.stage = stage;
-		swv.loadURL("http://www.flex.org");
+		swv.loadURL("http://www.google.com");
 		
-		(parent as View).addEventListener(FlexEvent.REMOVING, function(event:FlexEvent):void {
+		(owner as View).addEventListener(ViewNavigatorEvent.REMOVING, function(event:ViewNavigatorEvent):void {
 			swv.dispose();
 		});
 	</s:creationComplete>
-
-  <s:resize>
-    resizeSWV();
-  </s:resize>
+	
+	<s:resize>
+		resizeSWV();
+	</s:resize>
 	
 </s:Group>

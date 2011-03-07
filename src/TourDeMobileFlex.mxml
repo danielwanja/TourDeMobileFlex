@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:MobileApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
 					 xmlns:s="library://ns.adobe.com/flex/spark"
 					 firstView="views.SampleListView"
+					 backgroundColor="#000000"
 					 splashScreenImage="@Embed('icons/tdfsplash.png')">
 	
 	<fx:Script>
 			import views.SampleView;
 			import views.SampleListView;
+			import mx.core.mx_internal;
 		
-			override protected function backKeyHandler():void
+			override protected function backKeyUpHandler(event:KeyboardEvent):void
 			{
 				if ((navigator.activeView is SampleListView) || (navigator.activeView is SampleView))
 				{
@@ -19,12 +21,12 @@
 					}
 				}
 				
-				navigator.backKeyHandler();
+				navigator.mx_internal::backKeyUpHandler();
 			}
 	</fx:Script>
 	
 	<fx:Style>
-		@namespace s "library://ns.adobe.com/flex/spark";
+	@namespace s "library://ns.adobe.com/flex/spark";
 
     global
     {
@@ -36,15 +38,10 @@
       fontSize: 26px;
     }
 
-    s|ColumnHeaderBar
-    {
-      fontSize: 16px;
-    }
-
     s|Label
     {
-			font-size: 26px;
-		}
+	  font-size: 26px;
+	}
 	</fx:Style>
 	
-</s:MobileApplication>
+</s:ViewNavigatorApplication>

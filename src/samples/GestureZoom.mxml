@@ -20,11 +20,7 @@
 		}
 			
 		addEventListener(TransformGestureEvent.GESTURE_ZOOM, function(event:TransformGestureEvent):void {
-      trace("e.sx = " + event.scaleX);
-      trace("i.sx = " + img.scaleX);
-      trace("e.sy = " + event.scaleY);
-      trace("i.sy = " + img.scaleY);
-      img.transformAround(new Vector3D(event.localX, event.localY, 0), new Vector3D(img.scaleX * event.scaleX, img.scaleY * event.scaleY, 0));
+      		img.transformAround(new Vector3D(event.localX, event.localY, 0), new Vector3D(img.scaleX * event.scaleX, img.scaleY * event.scaleY, 0));
 		});
 	</s:creationComplete>
 	
