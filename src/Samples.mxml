@@ -6,8 +6,8 @@
     <SampleCategory name="Lists" icon="@Embed('icons/samples/view-sort-ascending.png')">
       <samples>
         <SampleItem uid="1000100" name="Standard List" resource="samples.SimpleList" icon="@Embed('icons/samples/view-sort-ascending.png')"/>
-        <SampleItem uid="1000101" name="MobileItemRenderer" resource="samples.SimpleMobileItemRenderer" icon="@Embed('icons/samples/view-sort-ascending.png')"/>
-        <SampleItem uid="1000102" name="MobileIconItemRenderer" resource="samples.SimpleMobileIconItemRenderer" icon="@Embed('icons/samples/view-sort-ascending.png')"/>
+        <SampleItem uid="1000101" name="LabelItemRenderer" resource="samples.SimpleLabelItemRenderer" icon="@Embed('icons/samples/view-sort-ascending.png')"/>
+        <SampleItem uid="1000102" name="IconItemRenderer" resource="samples.SimpleIconItemRenderer" icon="@Embed('icons/samples/view-sort-ascending.png')"/>
       </samples>
     </SampleCategory>
 

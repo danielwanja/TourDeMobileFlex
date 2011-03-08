@@ -72,7 +72,7 @@
 		</s:change>
 	    <s:itemRenderer>
 	      <fx:Component>
-	        <s:MobileIconItemRenderer width="100%" height="68" labelField="name" iconField="icon" iconHeight="48" iconWidth="48"/>
+	        <s:IconItemRenderer width="100%" height="68" labelField="name" iconField="icon" iconHeight="48" iconWidth="48"/>
 	      </fx:Component>
 	    </s:itemRenderer>
 	</s:List>

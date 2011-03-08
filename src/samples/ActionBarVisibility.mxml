@@ -8,7 +8,7 @@
   </fx:Script>
 
 	<s:creationComplete>
-		if ((parent as View).actionBarVisible)
+		if ((owner as View).actionBarVisible)
 		{
 			c.selected = true;
 		}
@@ -16,14 +16,7 @@
 	
 	<s:CheckBox id="c" label="ActionBar Visible">
 		<s:change>
-			if (c.selected)
-			{
-				(parent as View).actionBarVisible = true;
-			}
-			else
-			{
-				(parent as View).actionBarVisible = false;
-			}
+			(owner as View).actionBarVisible = c.selected;
 		</s:change>
 	</s:CheckBox>
 	

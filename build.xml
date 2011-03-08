@@ -2,6 +2,9 @@
 <project name="Tour de Mobile Flex">
 
   <property file="build.properties"/>
+  <property name="mxmlc.optimize" value="false"/>
+  <property name="mxmlc.debug" value="true"/>
+  <property name="adt.target" value="apk-debug"/>
 
   <taskdef name="mxmlc" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" classname="flex.ant.MxmlcTask"/>
 
@@ -11,7 +14,7 @@
     <mkdir dir="${out.dir}"/>
 
     <mxmlc file="src/TourDeMobileFlex.mxml" output="${out.dir}/TourDeMobileFlex.swf"
-           optimize="true" configname="airmobile" debug="false">
+           optimize="${mxmlc.optimize}" configname="airmobile" debug="${mxmlc.debug}">
       <source-path path-element="src"/>
     </mxmlc>
   </target>
@@ -37,7 +40,7 @@
     <java jar="${FLEX_HOME}/lib/adt.jar" fork="true" failonerror="true" dir="${out.dir}">
         <arg value="-package"/>
         <arg value="-target"/>
-        <arg value="apk-debug"/>
+        <arg value="${adt.target}"/>
         <arg value="-storetype"/>
         <arg value="${STORETYPE}"/>
         <arg value="-keystore"/>
@@ -50,7 +53,14 @@
         <arg value="icons"/>
         <arg value="codesamples"/>
     </java>
+  </target>
 
+  <target name="package-release-apk">
+    <antcall target="package-apk">
+      <param name="mxmlc.optimize" value="true"/>
+      <param name="mxmlc.debug" value="false"/>
+      <param name="adt.target" value="apk"/>
+    </antcall>
   </target>
 
   <target name="install-apk" depends="package-apk">

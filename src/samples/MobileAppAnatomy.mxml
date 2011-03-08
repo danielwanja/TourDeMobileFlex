@@ -3,15 +3,15 @@
 
   <fx:Script>
     <![CDATA[
-    import mx.core.FlexGlobals;
-    import mx.core.UIComponent;
-    import mx.events.FlexEvent;
-    import spark.components.View;
+		import mx.core.FlexGlobals;
+		import mx.core.UIComponent;
+		import mx.events.FlexEvent;
+		
+		import spark.components.View;
+		import spark.components.ViewNavigatorApplication;
+		import spark.events.ViewNavigatorEvent;
 
-    import spark.components.MobileApplication;
-    import spark.components.supportClasses.MobileTextField;
-
-    private var app:MobileApplication = FlexGlobals.topLevelApplication as MobileApplication;
+    private var app:ViewNavigatorApplication = FlexGlobals.topLevelApplication as ViewNavigatorApplication;
 
     private var highlight:Sprite;
 
@@ -43,7 +43,7 @@
   </fx:Script>
 
   <s:creationComplete>
-    (parent as View).addEventListener(FlexEvent.REMOVING, function(event:FlexEvent):void {
+    (parent['document'] as View).addEventListener(ViewNavigatorEvent.REMOVING, function(event:ViewNavigatorEvent):void {
       removeHighlight();
     });
   </s:creationComplete>

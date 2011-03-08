@@ -49,7 +49,7 @@
 
   <s:Label id="l" fontSize="18"/>
 
-  <s:DataGrid id="dg" width="100%" height="100%" fontSize="20" variableRowHeight="false" lineBreak="explicit" selectionMode="none">
+  <s:DataGrid id="dg" width="100%" height="100%" fontSize="20" variableRowHeight="false" selectionMode="none">
     <s:creationComplete><![CDATA[
         dg.skin['grid'].addEventListener(FlexEvent.UPDATE_COMPLETE, function(event:FlexEvent):void {
           if ((requestTime != 0) && (renderTime == 0))
