@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
 	
 	<fx:Script>
 		import spark.events.ViewNavigatorEvent;
@@ -19,19 +20,19 @@
 		}
 	</fx:Script>
 	
-	<s:creationComplete>
+	<s:viewActivate>
 		swv = new StageWebView();					
 		resizeSWV();
 		swv.stage = stage;
 		swv.loadURL("http://www.google.com");
-		
-		(owner as View).addEventListener(ViewNavigatorEvent.REMOVING, function(event:ViewNavigatorEvent):void {
-			swv.dispose();
-		});
-	</s:creationComplete>
+	</s:viewActivate>
+	
+	<s:viewDeactivate>
+		swv.dispose();
+	</s:viewDeactivate>
 	
 	<s:resize>
 		resizeSWV();
 	</s:resize>
 	
-</s:Group>
+</s:View>

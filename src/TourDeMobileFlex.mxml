@@ -1,47 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+<s:TabbedViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
 					 xmlns:s="library://ns.adobe.com/flex/spark"
-					 firstView="views.SampleListView"
+					 xmlns:local="*"
 					 backgroundColor="#000000"
-					 splashScreenImage="@Embed('icons/tdfsplash.png')">
-	
-	<fx:Script>
-			import views.SampleView;
-			import views.SampleListView;
-			import mx.core.mx_internal;
-		
-			override protected function backKeyUpHandler(event:KeyboardEvent):void
-			{
-				if ((navigator.activeView is SampleListView) || (navigator.activeView is SampleView))
-				{
-					var newItem:SampleItem =  Model.getInstance().findParent(Model.getInstance().currentItem);
-					if (newItem != null)
-					{
-						Model.getInstance().currentItem = newItem;
-					}
-				}
-				
-				navigator.mx_internal::backKeyUpHandler();
-			}
-	</fx:Script>
+					 splashScreenImage="@Embed('icons/tdfsplash.png')"
+					 resizeForSoftKeyboard="true"
+					 applicationDPI="240">
 	
 	<fx:Style>
-	@namespace s "library://ns.adobe.com/flex/spark";
-
-    global
-    {
-      fontSize: 20px;
-    }
-
-    s|List
-    {
-      fontSize: 26px;
-    }
-
-    s|Label
-    {
-	  font-size: 26px;
-	}
+		@namespace s "library://ns.adobe.com/flex/spark";
+		
+		@media (os-platform: "iOS")
+		{
+			s|ActionBar
+			{
+				defaultButtonAppearance: beveled;
+			}
+		}
 	</fx:Style>
 	
-</s:ViewNavigatorApplication>
+	<fx:Script>
+		<![CDATA[
+		import spark.components.Button;
+		import spark.components.Label;
+			
+		public function viewChanged(event:ViewNavigatorEvent):void
+		{
+			if ((event != null) && (event.view != null) && (event.view.data != null))
+			{
+				if ((event.view.data is SampleItem) && (!(event.view.data is SampleCategory)))
+				{
+					ping(event.view.data as SampleItem);
+				}
+			}
+		}
+		
+		protected function ping(sampleItem:SampleItem):void
+		{
+			// annonymously ping the tdf server about the sample being viewed
+			var urlVariables:URLVariables = new URLVariables();
+			urlVariables.Request = "logView";
+			urlVariables.ObjectId = 0; //.uid;
+			
+			var urlRequest:URLRequest = new URLRequest("http://tourdeflex.adobe.com/server/main.php");
+			urlRequest.method = URLRequestMethod.POST;
+			urlRequest.data = urlVariables;
+			
+			var urlLoader:URLLoader = new URLLoader();
+			urlLoader.addEventListener(IOErrorEvent.IO_ERROR, function(event:IOErrorEvent):void {
+				// ignore
+			});
+			urlLoader.load(urlRequest);
+		}
+		]]>
+	</fx:Script>
+	
+	<s:keyDown>
+		if (event.keyCode == Keyboard.SEARCH)
+		{
+			this.tabbedNavigator.selectedIndex = 2;
+		}
+	</s:keyDown>
+	
+	<local:SampleViewNavigator id="featured" label="Featured" width="100%" height="100%" firstView="{Categories.featured.resource}" firstViewData="{Categories.featured}" viewChanged="viewChanged(event)"/>
+	<local:SampleViewNavigator id="categories" label="Categories" width="100%" height="100%" firstView="{Categories.topLevel.resource}" firstViewData="{Categories.topLevel}" viewChanged="viewChanged(event)"/>
+	<local:SampleViewNavigator id="search" label="Search" width="100%" height="100%" firstView="views.SearchView" viewChanged="viewChanged(event)"/>
+	<local:SampleViewNavigator label="About" width="100%" height="100%" firstView="views.AboutView"/>
+	
+</s:TabbedViewNavigatorApplication>

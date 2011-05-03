@@ -1,8 +1,14 @@
 <?xml version="1.0"?>
-<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" paddingTop="20" paddingLeft="20" paddingRight="20">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
+	
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
 
-  <s:CheckBox id="cb" label="Check me!"/>
+    <s:CheckBox id="cb" label="Check me!"/>
 
-  <s:Label text="{cb.selected ? 'checked' : 'unchecked'}" paddingTop="20"/>
+    <s:Label text="{cb.selected ? 'checked' : 'unchecked'}" paddingTop="20"/>
 
-</s:VGroup>
+</s:View>

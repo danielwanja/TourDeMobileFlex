@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <application xmlns="http://ns.adobe.com/air/application/2.6">
 
-	<id>adobe.flex.TourDeMobileFlex</id>
+	<id>com.jamesward.TourDeMobileFlex</id>
 	<filename>TourDeMobileFlex</filename>
 	<name>Tour de Mobile Flex</name>
 	<versionNumber>1.0.3</versionNumber>
@@ -11,6 +11,7 @@
 		<autoOrients>true</autoOrients>
 		<fullScreen>false</fullScreen>
 		<visible>false</visible>
+		<softKeyboardBehavior>none</softKeyboardBehavior>
 	</initialWindow>
 
 	<icon>
@@ -19,6 +20,17 @@
 		<image48x48>icons/tdfx_48.png</image48x48>
 		<image128x128>icons/tdfx_128.png</image128x128>
 	</icon>
+	
+	<iPhone>
+        <InfoAdditions><![CDATA[
+			<key>UIDeviceFamily</key>
+			<array>
+				<string>1</string>
+				<string>2</string>
+			</array>
+		]]></InfoAdditions>
+        <requestedDisplayResolution>high</requestedDisplayResolution>
+    </iPhone>
 
 	<android>
 		<manifestAdditions><![CDATA[

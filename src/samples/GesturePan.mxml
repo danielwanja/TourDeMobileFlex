@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
 
-  <fx:Script>
+    <fx:Script>
 		import flash.events.TransformGestureEvent;
 		import spark.components.Label;
 	</fx:Script>
@@ -20,12 +22,12 @@
 
 		addEventListener(TransformGestureEvent.GESTURE_PAN, function(event:TransformGestureEvent):void {
 			img.x += event.offsetX;
-      img.y += event.offsetY;
+            img.y += event.offsetY;
 		});
 	</s:creationComplete>
 
 	<s:Image id="img" source="@Embed('air-logo.jpg')"/>
 
-  <s:Label text="Use two separated fingers" paddingTop="20"/>
+    <s:Label text="Use two separated fingers" paddingTop="20"/>
 
-</s:Group>
+</s:View>

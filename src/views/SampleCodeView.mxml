@@ -1,45 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark">
-
-
-  <fx:Script>
-		protected var swv:StageWebView;
-
-    protected function updateSWVSize():void
-    {
-      if (swv != null)
-      {
-        swv.viewPort = new Rectangle(0, stage.height - height + 35, width, height - 35);
-      }
-    }
-	</fx:Script>
-
-  <s:navigationContent>
-		<s:Button label="Back" click="navigator.popView()"/>
-	</s:navigationContent>
-
-	<s:add>
-		title = Model.getInstance().currentItem.name;
-  </s:add>
-
-  <s:viewActivate>  
-    swv = new StageWebView();
-    updateSWVSize();
-		swv.stage = stage;
-    var cName:String = (Model.getInstance().currentItem.resource as Class).toString();
-    cName = cName.substring(7, cName.length - 1);
-		swv.loadURL("file:///android_asset/codesamples/" + cName + ".html");
-	</s:viewActivate>
-
-  <s:removing>
-    swv.dispose();
-  </s:removing>
-
-  <s:resize>
-    updateSWVSize();
-  </s:resize>
-
-  <s:Label text="Download this sample: flex.org/tdmf" height="35" paddingTop="7"/>
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:local="*"
+		title="{data.name}">
 	
+	<fx:Script>
+		protected function parseSourceUrl(sampleName:String):String
+		{
+			var sampleSourceUrl:String = sampleName.substring(7, sampleName.length - 1);
+			
+			// debugging
+			return "http://www.google.com";
+			
+			if (Capabilities.version.indexOf("AND") == 0)
+			{
+				return "file:///android_asset/codesamples/" + sampleSourceUrl + ".html"
+			}
+			else if (Capabilities.version.indexOf("iOS") == 0)
+			{
+				// todo: fix this
+				return sampleSourceUrl;
+			}
+			else
+			{
+				return sampleSourceUrl;
+			}
+		}
+	</fx:Script>
+	
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	
+	<s:Label text="Download this sample: flex.org/tdmf" height="35" paddingTop="7"/>
+	
+	<local:StageWebViewUI url="{parseSourceUrl(data.resource.toString())}" width="100%" height="100%"/>
+
 </s:View>

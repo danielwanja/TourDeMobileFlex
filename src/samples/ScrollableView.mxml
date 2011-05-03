@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
+
+	<s:Scroller width="100%" height="100%">
+		<s:VGroup width="100%" paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" gap="300">
+			<s:Label width="100%" text="Everything in here should scroll up when the touch keyboard is opened, and then scroll down when the keyboard is closed"/>
+			<s:TextInput width="100%" prompt="touch here to open the keyboard"/>
+		</s:VGroup>
+	</s:Scroller>
+
+</s:View>

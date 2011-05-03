@@ -25,6 +25,10 @@
 		</s:Button>
 	</s:actionContent>
 	
+	<s:viewMenuItems>
+		<s:ViewMenuItem label="View Source"/>
+	</s:viewMenuItems>
+	
 	<s:add>
 		title = Model.getInstance().currentItem.name;
 

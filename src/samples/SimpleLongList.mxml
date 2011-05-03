@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
+	
+	<fx:Script>
+		public static const name:String = "100,000 Item Simple List";
+	</fx:Script>
+	
+	<fx:Declarations>		
+		<s:ArrayList id="al">
+			<fx:Object label="Scotch"/>
+			<fx:Object label="Wine"/>
+			<fx:Object label="Beer"/>
+			<fx:Object label="Gin"/>
+			<fx:Object label="Rum"/>
+			<fx:Object label="Vodka"/>
+			<fx:Object label="Baileys"/>
+			<fx:Object label="Whiskey"/>
+			<fx:Object label="Sake"/>
+			<fx:Object label="Stump Juice"/>
+			<fx:Object label="Cognac"/>
+			<fx:Object label="Port"/>
+		</s:ArrayList>
+	</fx:Declarations>
+	
+	<s:viewActivate>
+		<![CDATA[
+		var a:Array = new Array();
+		for (var i:uint = 0; i < 100000; i++)
+		{
+			a.push(al.getItemAt((Math.random() * al.length)));
+		}
+		
+		l.dataProvider = new ArrayList(a);
+		]]>
+	</s:viewActivate>
+	
+	<s:List id="l" width="100%" height="100%"/>
+	
+</s:View>

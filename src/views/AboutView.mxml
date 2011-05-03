@@ -5,12 +5,8 @@
 		title="About Tour de Flex">
 	
 	<fx:Script>
-			import flash.net.navigateToURL;
+		import flash.net.navigateToURL;
 	</fx:Script>
-
-	<s:navigationContent>
-		<s:Button label="Back" click="navigator.popView()"/>
-	</s:navigationContent>
 
 	<s:Scroller width="100%" height="100%">
 		<s:VGroup paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10">			

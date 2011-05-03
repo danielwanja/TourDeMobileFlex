@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
-		 xmlns:s="library://ns.adobe.com/flex/spark"
-     paddingTop="20" paddingLeft="20" paddingRight="20">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
 
-  <fx:Script>
+    <fx:Script>
     import spark.components.View;
-  </fx:Script>
+    </fx:Script>
+	
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
 
 	<s:creationComplete>
-		if ((owner as View).actionBarVisible)
+		if (actionBarVisible)
 		{
 			c.selected = true;
 		}
@@ -16,8 +20,8 @@
 	
 	<s:CheckBox id="c" label="ActionBar Visible">
 		<s:change>
-			(owner as View).actionBarVisible = c.selected;
+			actionBarVisible = c.selected;
 		</s:change>
 	</s:CheckBox>
 	
-</s:VGroup>
+</s:View>

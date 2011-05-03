@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
-		 xmlns:s="library://ns.adobe.com/flex/spark"
-     paddingTop="20" paddingLeft="20" paddingRight="20">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark">
 
 	<fx:Script>
 		import flash.sensors.Geolocation;
 
-    protected var g:Geolocation;
+	    protected var g:Geolocation;
 	</fx:Script>
+	
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
 	
 	<s:creationComplete>
 		if (Geolocation.isSupported)
@@ -39,10 +42,10 @@
 		}
 	</s:creationComplete>
 
-  <s:removedFromStage>
-    g = null;
-  </s:removedFromStage>
+    <s:removedFromStage>
+        g = null;
+    </s:removedFromStage>
 	
 	<s:Label id="l"/>
 	
-</s:VGroup>
+</s:View>

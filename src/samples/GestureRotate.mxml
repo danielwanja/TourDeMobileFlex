@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
 
-  <fx:Script>
+    <fx:Script>
 		import flash.events.TransformGestureEvent;
 		import spark.components.Label;
 	</fx:Script>
@@ -19,10 +21,10 @@
 		}
 
 		addEventListener(TransformGestureEvent.GESTURE_ROTATE, function(event:TransformGestureEvent):void {
-      img.transformAround(new Vector3D(img.width/2, img.height/2, 0), null, new Vector3D(0, 0, img.rotationZ + event.rotation));
+            img.transformAround(new Vector3D(img.width/2, img.height/2, 0), null, new Vector3D(0, 0, img.rotationZ + event.rotation));
 		});
 	</s:creationComplete>
 
 	<s:Image id="img" source="@Embed('air-logo.jpg')"/>
 
-</s:Group>
+</s:View>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<fxpProperties abbreviated="false" authoringTool="Flex Builder" compiles="true" parentProject="33f6635f-6b3a-4a94-ad60-c95455c55002" projectUUID="33f6635f-6b3a-4a94-ad60-c95455c55002" sdkVersion="4.5.0" uuid="435ea038-734f-48a0-8b2b-6f81b324dbe9" version="9">
+<fxpProperties abbreviated="false" authoringTool="Flex Builder" compiles="true" parentProject="33f6635f-6b3a-4a94-ad60-c95455c55002" projectUUID="33f6635f-6b3a-4a94-ad60-c95455c55002" pureCatalystProject="false" sdkVersion="4.5.1" uuid="9abc4dbb-a257-486b-bdaf-894aee0e227e" version="15">
   <projects/>
   <src/>
   <swc>
-    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="435ea038-734f-48a0-8b2b-6f81b324dbe9"/>
+    <linked location="sdkPlaceHolder" path="sdkPlaceHolder" position="0" uuid="9abc4dbb-a257-486b-bdaf-894aee0e227e"/>
     <linked location="C:/workspace-burrito-new/TourDeMobileFlex/libs" path="/libs" position="1" uuid="435ea038-734f-48a0-8b2b-6f81b324dbe9"/>
   </swc>
   <misc/>

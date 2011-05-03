@@ -1,68 +1,68 @@
 <?xml version="1.0"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
-
-  <fx:Script>
-    <![CDATA[
-		import mx.core.FlexGlobals;
-		import mx.core.UIComponent;
-		import mx.events.FlexEvent;
-		
-		import spark.components.View;
-		import spark.components.ViewNavigatorApplication;
-		import spark.events.ViewNavigatorEvent;
-
-    private var app:ViewNavigatorApplication = FlexGlobals.topLevelApplication as ViewNavigatorApplication;
-
-    private var highlight:Sprite;
-
-    private function removeHighlight():void
-    {
-      if ((highlight != null) && (stage.contains(highlight)))
-      {
-        stage.removeChild(highlight);
-        highlight.graphics.clear();
-        highlight = null;
-      }
-    }
-
-    private function highlightObject(o:UIComponent):void
-    {
-      removeHighlight();
-
-      highlight = new Sprite();
-      highlight.graphics.beginFill(0xa7cdf0, 0.5);
-      var p:Point = o.localToGlobal(new Point());
-      highlight.graphics.drawRect(p.x, p.y, o.width, o.height);
-      highlight.addEventListener(MouseEvent.CLICK, function(event:MouseEvent):void {
-        removeHighlight();
-      });
-
-      stage.addChild(highlight);
-    }
-    ]]>
-  </fx:Script>
-
-  <s:creationComplete>
-    (parent['document'] as View).addEventListener(ViewNavigatorEvent.REMOVING, function(event:ViewNavigatorEvent):void {
-      removeHighlight();
-    });
-  </s:creationComplete>
-
-  <s:Scroller width="100%" height="100%">
-    <s:VGroup paddingTop="20" paddingLeft="20" paddingRight="20" paddingBottom="20" fontSize="18">
-        <s:Label text="A MobileApplication contains a ViewNavigator" width="100%" fontSize="18"/>
-        <s:Button label="Highlight the ViewNavigator" click="highlightObject(app.navigator)"/>
-        
-        <s:Label text="A ViewNavigator contains an ActionBar and a View" width="100%" paddingTop="20" fontSize="18"/>
-        <s:Button label="Highlight the ActionBar" click="highlightObject(app.navigator.actionBar)"/>
-        <s:Button label="Highlight the View" click="highlightObject(app.navigator.activeView)"/>
-
-        <s:Label text="An ActionBar contains navigationContent, titleContent or titleDisplay, and actionContent" width="100%" paddingTop="20" fontSize="18"/>
-
-        <s:Button label="Highlight the navigationContent" click="highlightObject(app.navigator.actionBar.navigationGroup)"/>
-        <s:Button label="Highlight the titleContent or titleDisplay" click="highlightObject(app.navigator.actionBar.titleDisplay as UIComponent)"/>
-        <s:Button label="Highlight the actionContent" click="highlightObject(app.navigator.actionBar.actionGroup)"/>
-    </s:VGroup>
-  </s:Scroller>
-
-</s:Group>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.core.FlexGlobals;
+			import mx.core.UIComponent;
+			import mx.events.FlexEvent;
+			
+			import spark.components.TabbedViewNavigatorApplication;
+			import spark.components.ViewNavigator;
+			import spark.events.ViewNavigatorEvent;
+			
+			private var app:TabbedViewNavigatorApplication = FlexGlobals.topLevelApplication as TabbedViewNavigatorApplication;
+			
+			private var highlight:Sprite;
+			
+			private function removeHighlight():void
+			{
+				if ((highlight != null) && (stage.contains(highlight)))
+				{
+					stage.removeChild(highlight);
+					highlight.graphics.clear();
+					highlight = null;
+				}
+			}
+			
+			private function highlightObject(o:UIComponent):void
+			{
+				removeHighlight();
+				
+				highlight = new Sprite();
+				highlight.graphics.beginFill(0xa7cdf0, 0.5);
+				var p:Point = o.localToGlobal(new Point());
+				highlight.graphics.drawRect(p.x, p.y, o.width, o.height);
+				highlight.addEventListener(MouseEvent.CLICK, function(event:MouseEvent):void {
+					removeHighlight();
+				});
+				
+				stage.addChild(highlight);
+			}
+		]]>
+	</fx:Script>
+	
+	<s:removing>
+		removeHighlight();
+	</s:removing>
+	
+	<s:Scroller width="100%" height="100%">
+		<s:VGroup paddingTop="20" paddingLeft="20" paddingRight="20" paddingBottom="20" fontSize="18">
+			<s:Label text="A MobileApplication contains a ViewNavigator" width="100%" fontSize="18"/>
+			<s:Button label="Highlight the ViewNavigator" click="highlightObject(app.tabbedNavigator)"/>
+			
+			<s:Label text="A ViewNavigator contains an ActionBar and a View" width="100%" paddingTop="20" fontSize="18"/>
+			<s:Button label="Highlight the ActionBar" click="highlightObject((app.tabbedNavigator.selectedNavigator as ViewNavigator).actionBar)"/>
+			<s:Button label="Highlight the View" click="highlightObject((app.tabbedNavigator.selectedNavigator as ViewNavigator).activeView)"/>
+			
+			<s:Label text="An ActionBar contains navigationContent, titleContent or titleDisplay, and actionContent" width="100%" paddingTop="20" fontSize="18"/>
+			
+			<s:Button label="Highlight the navigationContent" click="highlightObject((app.tabbedNavigator.selectedNavigator as ViewNavigator).actionBar.navigationGroup)"/>
+			<s:Button label="Highlight the titleContent or titleDisplay" click="highlightObject((app.tabbedNavigator.selectedNavigator as ViewNavigator).actionBar.titleDisplay as UIComponent)"/>
+			<s:Button label="Highlight the actionContent" click="highlightObject((app.tabbedNavigator.selectedNavigator as ViewNavigator).actionBar.actionGroup)"/>
+		</s:VGroup>
+	</s:Scroller>
+	
+</s:View>

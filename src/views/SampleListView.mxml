@@ -3,78 +3,44 @@
 		xmlns:s="library://ns.adobe.com/flex/spark">
 	
 	<fx:Script>
-			import mx.collections.ArrayList;
+		<![CDATA[
+		import spark.components.Label;
+		import spark.primitives.BitmapImage;
 			
-			import spark.components.Button;
-			import spark.components.Label;
-			import spark.primitives.BitmapImage;
+		[Bindable]
+		private var sampleCategory:SampleCategory;
 		
-			[Embed(source="/icons/header_logo.png")] private var headerLogo:Class;
+		override public function set data(data:Object):void
+		{
+			if (data != null)
+			{
+				sampleCategory = (data as SampleCategory);
+				titleContent = new Array();
+				
+				var headerImage:BitmapImage = new BitmapImage();
+				headerImage.source = sampleCategory.icon;
+				titleContent.push(headerImage);
+				
+				if ((sampleCategory.name != null) && (sampleCategory.name.length > 0))
+				{
+					var titleDisplayComponent:TitleDisplayComponent = new TitleDisplayComponent();
+					titleDisplayComponent.text = sampleCategory.name;
+					titleContent.push(titleDisplayComponent);
+				}
+			}
+		}
+			
+		override public function get data():Object
+		{
+			return sampleCategory;
+		}
+		]]>
 	</fx:Script>
 	
-	<s:add>
-		l.dataProvider = new ArrayList((Model.getInstance().currentItem as SampleCategory).samples);
-		
-		if (Model.getInstance().currentItem == Model.getInstance().samples)
-		{
-			var bi:BitmapImage = new BitmapImage();
-			bi.source = new headerLogo();
-			titleContent = [bi];
-			
-			var ab:Button = new Button();
-			ab.label = "About";
-			ab.addEventListener(MouseEvent.CLICK, function(event:MouseEvent):void {
-				navigator.pushView(views.AboutView);
-			});
-			actionContent = [ab];
-		}
-		else
-		{
-			var bb:Button = new Button();
-			bb.label = "Back";
-			bb.addEventListener(MouseEvent.CLICK, function(event:MouseEvent):void {
-				var ke:KeyboardEvent = new KeyboardEvent(KeyboardEvent.KEY_UP, true, false, 0, Keyboard.BACK);
-				dispatchEvent(ke);
-			});
-			navigationContent = [bb];
-
-			title = Model.getInstance().currentItem.name;
-		
-			actionContent = [];
-		}
-	</s:add>
-	
-	<s:viewDeactivate>
-		// save the scroll position for the current sample
-		Model.getInstance().sampleListScrollPositions[(l.dataProvider as ArrayList).source] = l.layout.verticalScrollPosition;
-	</s:viewDeactivate>
-	
-	<s:List id="l" width="100%" height="100%">
-		<s:updateComplete>
-			// restore the scroll position
-			if (Model.getInstance().sampleListScrollPositions[(l.dataProvider as ArrayList).source] != undefined)
-			{
-				l.layout.verticalScrollPosition = Model.getInstance().sampleListScrollPositions[(l.dataProvider as ArrayList).source];
-				delete Model.getInstance().sampleListScrollPositions[(l.dataProvider as ArrayList).source];
-			}
-		</s:updateComplete>
+	<s:List id="l" width="100%" height="100%" dataProvider="{sampleCategory.samples}" itemRenderer="SampleItemRenderer">
 		<s:change>
-			Model.getInstance().currentItem = l.selectedItem;
-			
-			if (l.selectedItem is SampleCategory)
-			{
-				navigator.pushView(SampleListView);
-			}
-			else if (l.selectedItem is SampleItem)
-			{
-				navigator.pushView(SampleView);
-			}
+			navigator.pushView(l.selectedItem.resource, l.selectedItem);
 		</s:change>
-	    <s:itemRenderer>
-	      <fx:Component>
-	        <s:IconItemRenderer width="100%" height="68" labelField="name" iconField="icon" iconHeight="48" iconWidth="48"/>
-	      </fx:Component>
-	    </s:itemRenderer>
 	</s:List>
 	
 </s:View>

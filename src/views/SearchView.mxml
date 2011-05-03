@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark">
+	
+	<fx:Script>
+		import mx.collections.ArrayList;
+	</fx:Script>
+	
+	<s:titleContent>
+		<s:TextInput id="search" prompt="Search" text="{data.query}" width="100%">
+			<s:change>
+				var results:ArrayList = new ArrayList();
+				for each (var sampleItem:SampleItem in Categories.allSamples.samples.source)
+				{
+					if (sampleItem.name.indexOf(search.text) >= 0)
+					{
+						results.addItem(sampleItem);
+					}
+				}
+				data = {results: results, query: search.text};
+			</s:change>
+		</s:TextInput>
+	</s:titleContent>
+	
+	<s:List id="l" width="100%" height="100%" dataProvider="{data.results}" itemRenderer="SampleItemRenderer">
+		<s:change>
+			navigator.pushView(l.selectedItem.resource, l.selectedItem);
+		</s:change>
+	</s:List>
+	
+</s:View>

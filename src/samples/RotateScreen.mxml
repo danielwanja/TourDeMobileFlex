@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		  xmlns:s="library://ns.adobe.com/flex/spark"
-          paddingTop="20" paddingLeft="20" paddingRight="20">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
 	
 	<fx:Script>
 		[Bindable] private var l:String;
 	</fx:Script>
 	
-	<s:states>
-		<s:State name="landscape"/>
-		<s:State name="portrait"/>
-	</s:states>
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
 	
-	<s:addedToStage>
+	<s:viewActivate>
 		l = "Device Orientation = " + stage.deviceOrientation;
 		stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGE, function(event:StageOrientationEvent):void {
 			l = "Device Orientation = " + stage.deviceOrientation;
 		});
-	</s:addedToStage>
+	</s:viewActivate>
 	
 	<s:Label text="{l}"/>
   
@@ -33,4 +32,4 @@
 		</s:click>
 	</s:Button>
 	
-</s:VGroup>
+</s:View>

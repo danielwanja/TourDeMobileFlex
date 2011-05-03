@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009"
-		  xmlns:s="library://ns.adobe.com/flex/spark"
-     	  paddingTop="20" paddingLeft="20" paddingRight="20">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="{data.name}">
 
 	<s:creationComplete>
 		if (stage.displayState == StageDisplayState.FULL_SCREEN_INTERACTIVE)
@@ -14,13 +14,13 @@
 		<s:change>
 			if (c.selected)
 			{
-			  stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
+			    stage.displayState = StageDisplayState.FULL_SCREEN_INTERACTIVE;
 			}
 			else
 			{
-			  stage.displayState = StageDisplayState.NORMAL;
+			    stage.displayState = StageDisplayState.NORMAL;
 			}
 		</s:change>
 	</s:CheckBox>
 	
-</s:VGroup>
+</s:View>
