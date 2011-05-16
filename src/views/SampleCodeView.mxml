@@ -14,7 +14,7 @@
 			
 			if (Capabilities.version.indexOf("AND") == 0)
 			{
-				return "file:///android_asset/codesamples/" + sampleSourceUrl + ".html"
+				return "file:///android_asset/codesamples/" + sampleSourceUrl + ".html";
 			}
 			else if (Capabilities.version.indexOf("iOS") == 0)
 			{

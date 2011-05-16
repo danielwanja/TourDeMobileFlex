@@ -27,7 +27,7 @@ package
 				Samples.simpleList, Samples.customLabelItemRenderer, Samples.simpleIconItemRenderer, Samples.simpleLongList, Samples.longListWithIcons,
 				Samples.textInput, Samples.textArea, Samples.radioButtons, Samples.checkbox, Samples.slider,
 				Samples.stageWebView,
-				Samples.multipleTouchPoints, Samples.multipleTouchPoints, Samples.gesturePan, Samples.gestureRotate, Samples.gestureSwipe, Samples.gestureZoom,
+				Samples.multipleTouchPoints, Samples.gesturePan, Samples.gestureRotate, Samples.gestureSwipe, Samples.gestureZoom,
 				Samples.rawCamera, Samples.nativeCameraUI, Samples.nativeCameraRoll,
 				Samples.fullScreen, Samples.actionBarVisibility, Samples.rotateScreen,
 				Samples.simpleAccelerometer,

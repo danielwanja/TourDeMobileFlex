@@ -80,7 +80,9 @@ package
 			
 			// do we need a details button?
 			// check the view that is becoming active if it is rendering a SampleItem
-			if ((navigationStack.source[navigationStack.length - 1].data is SampleItem) && (!(navigationStack.source[navigationStack.length - 1].data is SampleCategory)))
+			if ((navigationStack.source[navigationStack.length - 1].data is SampleItem) &&
+				(!(navigationStack.source[navigationStack.length - 1].data is SampleCategory)) &&
+			    (navigationStack.source[navigationStack.length - 1].viewClass != SampleCodeView))
 			{
 				if (Capabilities.version.indexOf("AND") == 0)
 				{
