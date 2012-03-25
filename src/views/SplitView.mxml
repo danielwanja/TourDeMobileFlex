@@ -38,14 +38,9 @@
 			
 			protected function showView(event:ShowViewEvent):void
 			{
-				// 1. remove old view
-				var transition:SlideViewTransition = new SlideViewTransition();
-				viewNavigator.popAll();
+				if (viewNavigator.length>0)
+					viewNavigator.popAll();
 				
-				// 2. add selected view
-				transition = new SlideViewTransition();
-//				transition.mode = SlideViewTransitionMode.COVER;
-//				transition.direction = ViewTransitionDirection.UP;				
 				viewNavigator.pushView(event.view, event.data);
 			}
 			
