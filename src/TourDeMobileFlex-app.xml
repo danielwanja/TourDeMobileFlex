@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<application xmlns="http://ns.adobe.com/air/application/2.6">
+<application xmlns="http://ns.adobe.com/air/application/3.1">
 
 	<id>com.jamesward.TourDeMobileFlex</id>
 	<filename>TourDeMobileFlex</filename>
@@ -25,14 +25,15 @@
         <InfoAdditions><![CDATA[
 			<key>UIDeviceFamily</key>
 			<array>
-				<string>1</string>
-				<string>2</string>
+				<string>1</string>  <!-- iPhone + iPod Touch -->
+				<string>2</string>	<!-- iPad -->
 			</array>
 		]]></InfoAdditions>
         <requestedDisplayResolution>high</requestedDisplayResolution>
     </iPhone>
 
 	<android>
+ 		<colorDepth>16bit</colorDepth>	
 		<manifestAdditions><![CDATA[
             <manifest android:installLocation="auto">
                 <uses-permission name="android.permission.INTERNET"/>
