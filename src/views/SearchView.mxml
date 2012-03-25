@@ -4,6 +4,10 @@
 	
 	<fx:Script>
 		import mx.collections.ArrayList;
+		import mx.core.FlexGlobals;
+		import events.ShowViewEvent;
+		// Using top level application as dispatcher to ensure events gets routed correctly whilst list is in a callout.	
+		public var dispatcher:EventDispatcher = FlexGlobals.topLevelApplication as EventDispatcher;		
 	</fx:Script>
 	
 	<s:titleContent>
@@ -24,7 +28,10 @@
 	
 	<s:List id="l" width="100%" height="100%" dataProvider="{data.results}" itemRenderer="SampleItemRenderer">
 		<s:change>
-			navigator.pushView(l.selectedItem.resource, l.selectedItem);
+			var showViewEvent:ShowViewEvent = new ShowViewEvent(ShowViewEvent.SHOW_VIEW, l.selectedItem.resource,l.selectedItem);
+			dispatcher.dispatchEvent(showViewEvent);
+			// FIXME: dispatch event only if parent is splitview else just pushView
+			//navigator.pushView(l.selectedItem.resource, l.selectedItem);
 		</s:change>
 	</s:List>
 	

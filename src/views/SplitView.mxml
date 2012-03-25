@@ -18,44 +18,33 @@
 			import events.ShowViewEvent;
 			import events.ViewNavigatorEvent;
 			
+			import mx.core.FlexGlobals;
 			import mx.events.FlexEvent;
 			
-			import spark.transitions.SlideViewTransition;
-			import spark.transitions.SlideViewTransitionMode;
-			import spark.transitions.ViewTransitionDirection;
+			protected var dispatcher:EventDispatcher = FlexGlobals.topLevelApplication as EventDispatcher;
 			
 			protected function creationCompleteHandler(event:FlexEvent):void
 			{
-				this.addEventListener(ShowViewEvent.SHOW_VIEW, showView)
 				viewNavigator.addEventListener("viewChangeComplete", viewChangeComplete, false, 0, true);					
 			}
 			
 			protected function viewChangeComplete(event:Event):void
 			{
 				var viewActivateEvent:ViewNavigatorEvent = new ViewNavigatorEvent(ViewNavigatorEvent.VIEW_CHANGED, viewNavigator.activeView);
-				dispatchEvent(viewActivateEvent);
-			}
-			
-			protected function showView(event:ShowViewEvent):void
-			{
-				if (viewNavigator.length>0)
-					viewNavigator.popAll();
-				
-				viewNavigator.pushView(event.view, event.data);
+				dispatcher.dispatchEvent(viewActivateEvent);
 			}
 			
 		]]>
 	</fx:Script>
+	
 	<s:ViewNavigator  id="categoryNavigator" width="350"  height="100%"  
-					  firstView="views.TabbedView"
-					  firstViewData="{Categories.topLevel}"/>
+					  firstView="views.TabbedView" />
+	
 	<s:ViewNavigator id="viewNavigator" width="100%" height="100%"  >
 		<s:navigationContent.portrait>
 			<s:Button id="navigatorButton" label="Categories" 
 					  click="showFirstViewNavigatorInPopUp(navigatorButton)" />
 		</s:navigationContent.portrait>      
 	</s:ViewNavigator>
-	<fx:Script>
-		import mx.core.FlexGlobals;
-	</fx:Script>
+	
 </s:SplitViewNavigator>

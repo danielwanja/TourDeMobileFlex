@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark">
+		xmlns:s="library://ns.adobe.com/flex/spark" xmlns:local="*">
 	<fx:Metadata>
 		[Event(name="showView", type="events.ShowViewEvent")]
 	</fx:Metadata>
@@ -8,18 +8,25 @@
 		<![CDATA[
 			import events.ShowViewEvent;
 			
+			import mx.core.FlexGlobals;
+			
 			import spark.components.Button;
+			import spark.components.HGroup;
 			import spark.primitives.BitmapImage;
 			
 		[Bindable]
 		private var sampleCategory:SampleCategory;
-		
+			
+		// Using top level application as dispatcher to ensure events gets routed correctly whilst list is in a callout.	
+		public var dispatcher:EventDispatcher = FlexGlobals.topLevelApplication as EventDispatcher;
+			
 		override public function set data(data:Object):void
 		{
 			if (data != null)
 			{
 				sampleCategory = (data as SampleCategory);
 				titleContent = new Array();
+				
 				
 				var headerImage:BitmapImage = new BitmapImage();
 				headerImage.source = sampleCategory.icon;
@@ -49,14 +56,13 @@
 		}
 		]]>
 	</fx:Script>
-	
 	<s:List id="l" width="100%" height="100%" dataProvider="{sampleCategory.samples}" itemRenderer="SampleItemRenderer">
 		<s:change>			
 			if (l.selectedItem is SampleCategory) { 
 				navigator.pushView(l.selectedItem.resource, l.selectedItem);
 			} else { // FIXME: do this only if parent is splitview else just pushView
 				var showViewEvent:ShowViewEvent = new ShowViewEvent(ShowViewEvent.SHOW_VIEW, l.selectedItem.resource,l.selectedItem);
-				dispatchEvent(showViewEvent);
+				dispatcher.dispatchEvent(showViewEvent);
 			}
 		</s:change>
 	</s:List>
