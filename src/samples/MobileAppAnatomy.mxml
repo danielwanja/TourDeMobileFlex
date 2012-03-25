@@ -13,7 +13,10 @@
 			import spark.components.ViewNavigator;
 			import spark.events.ViewNavigatorEvent;
 			
-			private var app:TabbedViewNavigatorApplication = FlexGlobals.topLevelApplication as TabbedViewNavigatorApplication;
+			import views.SplitView;
+			
+			private var splitView:SplitView = FlexGlobals.topLevelApplication.splitView; // FIXME: This breaks the non split view version of the app.
+			private var mainNavigator:ViewNavigator = splitView.viewNavigator;
 			
 			private var highlight:Sprite;
 			
@@ -43,7 +46,12 @@
 			}
 		]]>
 	</fx:Script>
-	
+	<s:navigationContent>
+		<s:Button label="Home" />
+	</s:navigationContent>
+	<s:actionContent>
+		<s:Button label="+Add" />
+	</s:actionContent>
 	<s:removing>
 		removeHighlight();
 	</s:removing>
@@ -51,17 +59,17 @@
 	<s:Scroller width="100%" height="100%">
 		<s:VGroup paddingTop="20" paddingLeft="20" paddingRight="20" paddingBottom="20" fontSize="18">
 			<s:Label text="A MobileApplication contains a ViewNavigator" width="100%" fontSize="18"/>
-			<s:Button label="Highlight the ViewNavigator" click="highlightObject(app.tabbedNavigator)"/>
+			<s:Button label="Highlight the ViewNavigator" click="highlightObject(splitView)"/>
 			
 			<s:Label text="A ViewNavigator contains an ActionBar and a View" width="100%" paddingTop="20" fontSize="18"/>
-			<s:Button label="Highlight the ActionBar" click="highlightObject((app.tabbedNavigator.selectedNavigator as ViewNavigator).actionBar)"/>
-			<s:Button label="Highlight the View" click="highlightObject((app.tabbedNavigator.selectedNavigator as ViewNavigator).activeView)"/>
+			<s:Button label="Highlight the ActionBar" click="highlightObject(mainNavigator.actionBar)"/>
+			<s:Button label="Highlight the View" click="highlightObject(this)"/>
 			
 			<s:Label text="An ActionBar contains navigationContent, titleContent or titleDisplay, and actionContent" width="100%" paddingTop="20" fontSize="18"/>
 			
-			<s:Button label="Highlight the navigationContent" click="highlightObject((app.tabbedNavigator.selectedNavigator as ViewNavigator).actionBar.navigationGroup)"/>
-			<s:Button label="Highlight the titleContent or titleDisplay" click="highlightObject((app.tabbedNavigator.selectedNavigator as ViewNavigator).actionBar.titleDisplay as UIComponent)"/>
-			<s:Button label="Highlight the actionContent" click="highlightObject((app.tabbedNavigator.selectedNavigator as ViewNavigator).actionBar.actionGroup)"/>
+			<s:Button label="Highlight the navigationContent" click="highlightObject(mainNavigator.actionBar.navigationGroup)"/>
+			<s:Button label="Highlight the titleContent or titleDisplay" click="highlightObject(mainNavigator.actionBar.titleDisplay as UIComponent)"/>
+			<s:Button label="Highlight the actionContent" click="highlightObject(mainNavigator.actionBar.actionGroup)"/>
 		</s:VGroup>
 	</s:Scroller>
 	
