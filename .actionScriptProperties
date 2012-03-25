@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<actionScriptProperties analytics="false" mainApplicationPath="TourDeMobileFlex.mxml" projectUUID="33f6635f-6b3a-4a94-ad60-c95455c55002" version="10">
+<actionScriptProperties analytics="false" mainApplicationPath="TourDeMobileSplitView.mxml" projectUUID="33f6635f-6b3a-4a94-ad60-c95455c55002" version="10">
   <compiler additionalCompilerArguments="-locale en_US" autoRSLOrdering="true" copyDependentFiles="true" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="false" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin-debug" removeUnusedRSL="true" sourceFolderPath="src" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="true" useDebugRSLSwfs="true" verifyDigests="true" warn="true">
     <compilerSourcePath/>
     <libraryPath defaultLinkType="0">
@@ -32,6 +32,9 @@
   </compiler>
   <applications>
     <application path="TourDeMobileFlex.mxml">
+      <airExcludes/>
+    </application>
+    <application path="TourDeMobileSplitView.mxml">
       <airExcludes/>
     </application>
   </applications>

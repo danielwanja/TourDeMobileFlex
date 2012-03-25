@@ -21,6 +21,7 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import events.ViewNavigatorEvent;
 		import spark.components.Button;
 		import spark.components.Label;
 			

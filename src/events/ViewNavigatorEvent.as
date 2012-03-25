@@ -1,4 +1,4 @@
-package
+package events
 {
 	import flash.events.Event;
 	
@@ -12,7 +12,7 @@ package
 		
 		public function ViewNavigatorEvent(type:String, view:View)
 		{
-			super(type, bubbles, cancelable);
+			super(type, true, cancelable);
 			this.view = view;
 		}
 	}

@@ -17,10 +17,11 @@ package
 	import spark.transitions.ViewTransitionDirection;
 	
 	import views.SampleCodeView;
+	import events.ViewNavigatorEvent;
 	
 	use namespace mx_internal;
 
-	[Event(name="viewChanged", type="ViewNavigatorEvent")]
+	[Event(name="viewChanged", type="events.ViewNavigatorEvent")]
 	public class SampleViewNavigator extends ViewNavigator
 	{
 		public function SampleViewNavigator()
