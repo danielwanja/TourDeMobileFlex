@@ -2,6 +2,7 @@ package
 {
 	import mx.collections.ArrayList;
 	
+	import views.AboutView;
 	import views.SampleListView;
 
 	public class Categories
@@ -20,7 +21,7 @@ package
 		
 		public static const featured:SampleCategory = new SampleCategory(2100000, "", SampleListView, Icons.headerLogo, new ArrayList([Samples.multipleTouchPoints, Samples.rawCamera]));
 		
-		public static const topLevel:SampleCategory = new SampleCategory(2200000, "", SampleListView, Icons.headerLogo, new ArrayList([Samples.mobileAppAnatomy, Categories.lists, Categories.dataEntry, Categories.multitouchGestures, Categories.camera, Samples.stageWebView, Categories.screenManagement, Categories.remoteData]));
+		public static const topLevel:SampleCategory = new SampleCategory(2200000, "", SampleListView, Icons.headerLogo, new ArrayList([Samples.mobileAppAnatomy, Categories.lists, Categories.dataEntry, Categories.multitouchGestures, Categories.camera, Samples.stageWebView, Categories.screenManagement, Categories.remoteData, Samples.aboutView]));
 		
 		public static const allSamples:SampleCategory = new SampleCategory(2300000, "All Samples", SampleListView, Icons.headerLogo, 
 			new ArrayList([Samples.mobileAppAnatomy, Samples.scrollableView, Samples.busyIndicator,

@@ -31,6 +31,8 @@ package
 	import samples.SimpleTextArea;
 	import samples.SimpleTextInput;
 	
+	import views.AboutView;
+	
 	public class Samples
 	{
 		
@@ -77,5 +79,8 @@ package
 		public static const nativeAppIntegration:SampleItem = new SampleItem(1001000, "Native App Integration", NativeAppIntegration, Icons.runBuild);
 		
 		public static const censusRemoting:SampleItem = new SampleItem(1001100, "AMF Remoting", CensusRemoting, Icons.binary);
+		
+		public static const aboutView:SampleItem = new SampleItem(0, "About", AboutView, Icons.about);
+		
 	}
 }

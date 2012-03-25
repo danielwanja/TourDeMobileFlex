@@ -64,5 +64,8 @@ package
 		
 		[Embed(source="icons/samples/binary.png")]
 		public static const binary:Class;
+		
+		[Embed(source="icons/samples/about.png")]
+		public static var about:Class;
 	}
 }
