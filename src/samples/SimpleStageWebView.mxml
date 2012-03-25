@@ -13,10 +13,10 @@
 		
 		private function resizeSWV():void
 		{
-			if (swv != null)
-			{
-				swv.viewPort = new Rectangle(0, stage.height - height, width, height);
-			}
+			if (swv==null) return;
+			var p:Point = new Point(x, y);
+			p = this.localToGlobal(p);
+			swv.viewPort = new Rectangle(p.x, p.y, this.width, this.height);				
 		}
 	</fx:Script>
 	
