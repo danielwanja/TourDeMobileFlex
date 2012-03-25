@@ -4,6 +4,7 @@
 		xmlns:local="*"
 		actionBarVisible="false"
 		>
+	<s:SkinnableContainer width="100%" height="65" backgroundColor="black" /> 
 	<s:TabbedViewNavigator width="100%" height="100%">
 		
 		<local:SampleViewNavigator id="categories" label="Categories" width="100%" height="100%" 
