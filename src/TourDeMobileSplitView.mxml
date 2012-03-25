@@ -3,6 +3,7 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   xmlns:views="views.*"
 			   applicationDPI="240"
+			   backgroundColor="#000000"
 			   splashScreenImage="@Embed('icons/tdfsplash.png')"
 			   resizeForSoftKeyboard="true"			   
 			   creationComplete="creationCompleteHandler(event)">
