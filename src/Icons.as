@@ -26,6 +26,9 @@ package
 		[Embed(source="icons/samples/checkbox.png")]
 		public static const checkBox:Class;
 
+		[Embed(source="icons/samples/spinner-list.png")]
+		public static const spinnerList:Class;
+
 		[Embed(source="icons/samples/input-touchpad.png")]
 		public static const inputTouchpad:Class;
 		

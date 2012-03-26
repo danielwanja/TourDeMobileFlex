@@ -27,6 +27,7 @@ package
 	import samples.SimpleLongListWithIcons;
 	import samples.SimpleRadioButton;
 	import samples.SimpleSlider;
+	import samples.SimpleSpinnerList;
 	import samples.SimpleStageWebView;
 	import samples.SimpleTextArea;
 	import samples.SimpleTextInput;
@@ -53,6 +54,7 @@ package
 		public static const radioButtons:SampleItem = new SampleItem(1000202, "Radio Buttons", SimpleRadioButton, Icons.radioButtons);
 		public static const checkbox:SampleItem = new SampleItem(1000203, "Checkbox", SimpleCheckbox, Icons.checkBox);
 		public static const slider:SampleItem = new SampleItem(1000204, "Slider", SimpleSlider, Icons.checkBox);
+		public static const spinnerList:SampleItem = new SampleItem(0, "Spinner List", SimpleSpinnerList, Icons.spinnerList);
 		
 		public static const stageWebView:SampleItem = new SampleItem(1000300, "Stage Web View", SimpleStageWebView, Icons.webBrowser);
 		
@@ -75,6 +77,7 @@ package
 		public static const simpleDB:SampleItem = new SampleItem(1000800, "Local SQL Database", SimpleDB, Icons.serverDatabase);
 		
 		public static const simpleGPS:SampleItem = new SampleItem(1000900, "Geolocation", SimpleGPS, Icons.networkWireless);
+		
 		
 		public static const nativeAppIntegration:SampleItem = new SampleItem(1001000, "Native App Integration", NativeAppIntegration, Icons.runBuild);
 		

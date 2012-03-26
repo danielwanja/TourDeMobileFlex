@@ -9,7 +9,7 @@ package
 	{
 		public static const lists:SampleCategory = new SampleCategory(2000000, "Lists", SampleListView, Icons.viewSortAscending, new ArrayList([Samples.simpleList, Samples.simpleLongList, Samples.customLabelItemRenderer, Samples.simpleIconItemRenderer, Samples.longListWithIcons]));
 		
-		public static const dataEntry:SampleCategory = new SampleCategory(2000001, "Data Entry Controls", SampleListView, Icons.viewForm, new ArrayList([Samples.textInput, Samples.textArea, Samples.radioButtons, Samples.checkbox, Samples.slider]));
+		public static const dataEntry:SampleCategory = new SampleCategory(2000001, "Data Entry Controls", SampleListView, Icons.viewForm, new ArrayList([Samples.textInput, Samples.textArea, Samples.radioButtons, Samples.checkbox, Samples.slider, Samples.spinnerList]));
 		
 		public static const multitouchGestures:SampleCategory = new SampleCategory(2000002, "Multitouch/Gestures", SampleListView, Icons.inputTouchpad, new ArrayList([Samples.multipleTouchPoints, Samples.gesturePan, Samples.gestureRotate, Samples.gestureSwipe, Samples.gestureZoom]));
 		
@@ -26,7 +26,7 @@ package
 		public static const allSamples:SampleCategory = new SampleCategory(2300000, "All Samples", SampleListView, Icons.headerLogo, 
 			new ArrayList([Samples.mobileAppAnatomy, Samples.scrollableView, Samples.busyIndicator,
 				Samples.simpleList, Samples.customLabelItemRenderer, Samples.simpleIconItemRenderer, Samples.simpleLongList, Samples.longListWithIcons,
-				Samples.textInput, Samples.textArea, Samples.radioButtons, Samples.checkbox, Samples.slider,
+				Samples.textInput, Samples.textArea, Samples.radioButtons, Samples.checkbox, Samples.slider, Samples.spinnerList,
 				Samples.stageWebView,
 				Samples.multipleTouchPoints, Samples.gesturePan, Samples.gestureRotate, Samples.gestureSwipe, Samples.gestureZoom,
 				Samples.rawCamera, Samples.nativeCameraUI, Samples.nativeCameraRoll,
