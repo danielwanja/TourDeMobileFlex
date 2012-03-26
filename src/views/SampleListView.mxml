@@ -11,7 +11,6 @@
 			import mx.core.FlexGlobals;
 			
 			import spark.components.Button;
-			import spark.components.HGroup;
 			import spark.primitives.BitmapImage;
 			
 		[Bindable]
@@ -60,7 +59,7 @@
 		<s:change>			
 			if (l.selectedItem is SampleCategory) { 
 				navigator.pushView(l.selectedItem.resource, l.selectedItem);
-			} else { // FIXME: do this only if parent is splitview else just pushView
+			} else { 
 				var showViewEvent:ShowViewEvent = new ShowViewEvent(ShowViewEvent.SHOW_VIEW, l.selectedItem.resource,l.selectedItem);
 				dispatcher.dispatchEvent(showViewEvent);
 			}
