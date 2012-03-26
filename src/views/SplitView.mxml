@@ -40,7 +40,8 @@
 	<s:ViewNavigator  id="categoryNavigator" width="350"  height="100%"  
 					  firstView="views.TabbedView" />
 	
-	<s:ViewNavigator id="viewNavigator" width="100%" height="100%"  >
+	<s:ViewNavigator id="viewNavigator" width="100%" height="100%" 
+					 firstView="views.WelcomeView">
 		<s:navigationContent.portrait>
 			<s:Button id="navigatorButton" label="Categories" 
 					  click="showFirstViewNavigatorInPopUp(navigatorButton)" />
