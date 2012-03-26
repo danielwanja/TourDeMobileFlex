@@ -15,6 +15,7 @@
         <fx:Object thandle="Han_Cholo" name="Andrew Rubalcaba" location="DFW,TX" photo="@Embed('icons/marcoerikestrada3wb_reasonably_small.jpg')"/>
         <fx:Object thandle="jnack" name="John Nack" location="San Jose, CA" photo="@Embed('icons/jn_twitter_reasonably_small.jpg')"/>
         <fx:Object thandle="EladElrom" name="Elad Elrom" location="Manhattan" photo="@Embed('icons/twitterProfilePhoto_reasonably_small.jpg')"/>
+        <fx:Object thandle="danielwanja" name="Daniel Wanja" location="Denver, CO" photo="@Embed('icons/danielwanja_reasonably_small.jpg')"/>
       </s:ArrayCollection>
     </s:dataProvider>
     <s:itemRenderer>
