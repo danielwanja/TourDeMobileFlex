@@ -6,7 +6,8 @@
 			   backgroundColor="#000000"
 			   splashScreenImage="@Embed('icons/tdfsplash.png')"
 			   resizeForSoftKeyboard="true"			   
-			   creationComplete="creationCompleteHandler(event)">
+			   creationComplete="creationCompleteHandler(event)"
+			   >
 	<fx:Style>
 		@namespace s "library://ns.adobe.com/flex/spark";
 		
@@ -69,14 +70,13 @@
 			
 			protected function showView(event:ShowViewEvent):void
 			{
-				if (splitView.viewNavigator.length>0)
-					splitView.viewNavigator.popAll();
+				if (splitView.detailNavigator.length>0)
+					splitView.detailNavigator.popAll();
 				
-				splitView.viewNavigator.pushView(event.view, event.data, null, new NullViewTransition());
+				splitView.detailNavigator.pushView(event.view, event.data);
 			}		
 			
 		]]>
 	</fx:Script>	
-
 	<views:SplitView id="splitView" width="100%" height="100%"  viewChanged="viewChanged(event)" />
 </s:Application>
