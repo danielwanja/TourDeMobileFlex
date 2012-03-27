@@ -55,6 +55,7 @@ package
 			titleDisplay.selectable = false;
 			titleDisplay.multiline = false;
 			titleDisplay.wordWrap = false;
+			titleDisplay.setStyle("fontSize", 22);
 			titleDisplay.addEventListener(FlexEvent.VALUE_COMMIT,
 				titleDisplay_valueCommitHandler);
 			
