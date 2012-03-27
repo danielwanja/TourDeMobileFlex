@@ -43,24 +43,24 @@
   <flashCatalyst validateFlashCatalystCompatibility="false"/>
   <buildTargets>
     <buildTarget androidSettingsVersion="1" buildTargetName="com.adobe.flexide.multiplatform.android.platform">
-      <multiPlatformSettings enabled="true" includePlatformLibs="false" platformID="com.adobe.flexide.multiplatform.android.platform" version="2"/>
       <airSettings airCertificatePath="" airTimestamp="true" anePathSet="false" version="1">
         <airExcludes/>
         <anePaths/>
       </airSettings>
+      <multiPlatformSettings enabled="true" includePlatformLibs="false" platformID="com.adobe.flexide.multiplatform.android.platform" version="2"/>
       <actionScriptSettings version="1"/>
     </buildTarget>
     <buildTarget buildTargetName="default">
-      <multiPlatformSettings enabled="false" includePlatformLibs="false" platformID="default" version="2"/>
       <airSettings airCertificatePath="" airTimestamp="true" anePathSet="false" version="1">
         <airExcludes/>
         <anePaths/>
       </airSettings>
+      <multiPlatformSettings enabled="false" includePlatformLibs="false" platformID="default" version="2"/>
       <actionScriptSettings version="1"/>
     </buildTarget>
-    <buildTarget buildTargetName="com.adobe.flexide.multiplatform.ios.platform" iosSettingsVersion="1" provisioningFile="C:/workspace/TourDeMobileFlex/certs/ios/jamesward/James_Ward.mobileprovision" releasePackageType="ipa-ad-hoc">
+    <buildTarget buildTargetName="com.adobe.flexide.multiplatform.ios.platform" iosSettingsVersion="1" provisioningFile="/Users/daniel/Desktop/certificates/TourDeFlexProvisioningProfile.mobileprovision" releasePackageType="ipa-app-store">
       <multiPlatformSettings enabled="true" includePlatformLibs="false" platformID="com.adobe.flexide.multiplatform.ios.platform" version="2"/>
-      <airSettings airCertificatePath="C:/workspace/TourDeMobileFlex/certs/ios/jamesward/jamesward.p12" airTimestamp="true" anePathSet="false" version="1">
+      <airSettings airCertificatePath="/Users/daniel/Desktop/certificates/daniel.p12" airTimestamp="true" anePathSet="true" version="1">
         <airExcludes/>
         <anePaths/>
       </airSettings>
