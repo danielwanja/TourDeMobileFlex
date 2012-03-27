@@ -25,22 +25,22 @@
 			
 			protected function creationCompleteHandler(event:FlexEvent):void
 			{
-				viewNavigator.addEventListener("viewChangeComplete", viewChangeComplete, false, 0, true);					
+				detailNavigator.addEventListener("viewChangeComplete", viewChangeComplete, false, 0, true);					
 			}
 			
 			protected function viewChangeComplete(event:Event):void
 			{
-				var viewActivateEvent:ViewNavigatorEvent = new ViewNavigatorEvent(ViewNavigatorEvent.VIEW_CHANGED, viewNavigator.activeView);
+				var viewActivateEvent:ViewNavigatorEvent = new ViewNavigatorEvent(ViewNavigatorEvent.VIEW_CHANGED, detailNavigator.activeView);
 				dispatcher.dispatchEvent(viewActivateEvent);
 			}
 			
 		]]>
 	</fx:Script>
 	
-	<s:ViewNavigator  id="categoryNavigator" width="350"  height="100%"  
+	<s:ViewNavigator  id="masterNavigator" width="350"  height="100%"  
 					  firstView="views.TabbedView" />
 	
-	<s:ViewNavigator id="viewNavigator" width="100%" height="100%" 
+	<s:ViewNavigator id="detailNavigator" width="100%" height="100%" 
 					 firstView="views.WelcomeView">
 		<s:navigationContent.portrait>
 			<s:Button id="navigatorButton" label="Categories" 

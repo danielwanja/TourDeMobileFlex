@@ -16,7 +16,7 @@
 			import views.SplitView;
 			
 			private var splitView:SplitView = FlexGlobals.topLevelApplication.splitView; // FIXME: This breaks the non split view version of the app.
-			private var mainNavigator:ViewNavigator = splitView.viewNavigator;
+			private var mainNavigator:ViewNavigator = splitView.detailNavigator;
 			
 			private var highlight:Sprite;
 			
@@ -46,9 +46,6 @@
 			}
 		]]>
 	</fx:Script>
-	<s:navigationContent>
-		<s:Button label="Home" />
-	</s:navigationContent>
 	<s:actionContent>
 		<s:Button label="+Add" />
 	</s:actionContent>
