@@ -20,7 +20,7 @@
 			}    
 		}
 	</fx:Style>
-
+	
 	<fx:Script>
 		<![CDATA[
 			import events.ShowViewEvent;
@@ -30,6 +30,8 @@
 			
 			import spark.components.Button;
 			import spark.components.Label;
+			
+			import views.NullViewTransition;
 			
 			public function viewChanged(event:ViewNavigatorEvent):void
 			{
@@ -70,10 +72,11 @@
 				if (splitView.viewNavigator.length>0)
 					splitView.viewNavigator.popAll();
 				
-				splitView.viewNavigator.pushView(event.view, event.data);
-			}			
+				splitView.viewNavigator.pushView(event.view, event.data, null, new NullViewTransition());
+			}		
+			
 		]]>
 	</fx:Script>	
-	
+
 	<views:SplitView id="splitView" width="100%" height="100%"  viewChanged="viewChanged(event)" />
 </s:Application>
