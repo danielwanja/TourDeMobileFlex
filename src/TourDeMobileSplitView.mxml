@@ -32,8 +32,6 @@
 			import spark.components.Button;
 			import spark.components.Label;
 			
-			import views.NullViewTransition;
-			
 			public function viewChanged(event:ViewNavigatorEvent):void
 			{
 				if ((event != null) && (event.view != null) && (event.view.data != null))
