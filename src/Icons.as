@@ -26,6 +26,12 @@ package
 		[Embed(source="icons/samples/checkbox.png")]
 		public static const checkBox:Class;
 
+		[Embed(source="icons/samples/slider.png")]
+		public static const slider:Class;
+
+		[Embed(source="icons/samples/toggle-switch.png")]
+		public static const toggleSwitch:Class;
+
 		[Embed(source="icons/samples/spinner-list.png")]
 		public static const spinnerList:Class;
 

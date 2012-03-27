@@ -31,6 +31,7 @@ package
 	import samples.SimpleStageWebView;
 	import samples.SimpleTextArea;
 	import samples.SimpleTextInput;
+	import samples.SimpleToggleSwitch;
 	
 	import views.AboutView;
 	
@@ -53,7 +54,8 @@ package
 		public static const textArea:SampleItem = new SampleItem(1000201, "Text Area", SimpleTextArea, Icons.insertText);
 		public static const radioButtons:SampleItem = new SampleItem(1000202, "Radio Buttons", SimpleRadioButton, Icons.radioButtons);
 		public static const checkbox:SampleItem = new SampleItem(1000203, "Checkbox", SimpleCheckbox, Icons.checkBox);
-		public static const slider:SampleItem = new SampleItem(1000204, "Slider", SimpleSlider, Icons.checkBox);
+		public static const toggleSwitch:SampleItem = new SampleItem(0, "Toggle Switch", SimpleToggleSwitch, Icons.toggleSwitch);
+		public static const slider:SampleItem = new SampleItem(1000204, "Slider", SimpleSlider, Icons.slider);
 		public static const spinnerList:SampleItem = new SampleItem(0, "Spinner List", SimpleSpinnerList, Icons.spinnerList);
 		
 		public static const stageWebView:SampleItem = new SampleItem(1000300, "Stage Web View", SimpleStageWebView, Icons.webBrowser);
