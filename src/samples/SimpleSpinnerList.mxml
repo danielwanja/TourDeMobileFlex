@@ -2,83 +2,67 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" 
 		title="{data.name}">
-	<fx:Script>
-		<![CDATA[
-			import spark.components.calendarClasses.DateSelectorDisplayMode;
-		]]>
-	</fx:Script>
+	<s:layout>
+		<s:HorizontalLayout />
+	</s:layout>
 	
 	<!-- Simple SpinnerListContainer -->
-	<s:SpinnerListContainer x="40" y="28" width="200" height="200">
-		<s:SpinnerList id="spinnerList" height="100%" labelField="data" selectedIndex="2">
-			<s:ArrayList>
-				<fx:Object data="data1"></fx:Object>
-				<fx:Object data="data2"></fx:Object>
-				<fx:Object data="data3"></fx:Object>
-				<fx:Object data="data4"></fx:Object>
-			</s:ArrayList>
-		</s:SpinnerList>
-	</s:SpinnerListContainer>
-	<s:Label x="56" y="328" text="Selection: {spinnerList.selectedItem.data}"/>
+	<s:VGroup  height="100%" width="100%" verticalAlign="middle" horizontalAlign="center">
+		<s:SpinnerListContainer width="200" height="200">
+			<s:SpinnerList id="spinnerList" height="100%" labelField="data" selectedIndex="2">
+				<s:ArrayList>
+					<fx:Object data="data1"></fx:Object>
+					<fx:Object data="data2"></fx:Object>
+					<fx:Object data="data3"></fx:Object>
+					<fx:Object data="data4"></fx:Object>
+				</s:ArrayList>
+			</s:SpinnerList>
+		</s:SpinnerListContainer>
+		<s:Label  text="Selection: {spinnerList.selectedItem.data}"/>
+	</s:VGroup>
 	
-	<!-- List in a Callout Button -->
-	<s:CalloutButton x="379" y="313" label="Mode" verticalPosition="middle" horizontalPosition="after" >
-		<s:calloutLayout>
-			<s:HorizontalLayout/> 
-		</s:calloutLayout>
-		<s:List id="dateDisplayMode" labelField="data"  width="192" height="185" 
-					   typicalItem="dateAndTime">
-			<s:ArrayList>
-				<fx:Object data="{DateSelectorDisplayMode.DATE}"></fx:Object>
-				<fx:Object data="{DateSelectorDisplayMode.TIME}"></fx:Object>
-				<fx:Object data="{DateSelectorDisplayMode.DATE_AND_TIME}"></fx:Object>
-			</s:ArrayList>
-		</s:List>
-	</s:CalloutButton>		
-	
-	<!-- Date Spinner, mode set by the dateDisplayMode spinner list -->
-	<s:DateSpinner id="dateSpinner" x="378" y="28" displayMode="{dateDisplayMode.selectedItem.data}"  />
-	<s:Label x="491" y="338" text="Selection: {dateSpinner.selectedDate}"/>
-
 	<!-- SpinnerList with NumbericDataProvider -->
-	<s:SpinnerListContainer top="400" left="40"> 
-		<s:SpinnerList typicalItem="100" id="hours">
-			<s:dataProvider> 
-				<s:NumericDataProvider minimum="0" maximum="23" stepSize="1"/>
-			</s:dataProvider> 
-		</s:SpinnerList> 
-		<s:SpinnerList typicalItem="100" id="minutes">
-			<s:dataProvider> 
-				<s:NumericDataProvider minimum="0" maximum="59" stepSize="1"/>
-			</s:dataProvider> 
-		</s:SpinnerList> 
-		<s:SpinnerList typicalItem="100" id="ampm"
-					   dataProvider="{new ArrayList(['AM','PM'])}"
-					   wrapElements="false"/> 
-	</s:SpinnerListContainer>  
-	<s:Label x="56" y="727" text="Selection: {hours.selectedItem+':'+minutes.selectedItem+':'+ampm.selectedItem}"/>
+	<s:VGroup height="100%" width="100%" verticalAlign="middle" horizontalAlign="center">
+		<s:SpinnerListContainer > 
+			<s:SpinnerList typicalItem="100" id="hours">
+				<s:dataProvider> 
+					<s:NumericDataProvider minimum="0" maximum="23" stepSize="1"/>
+				</s:dataProvider> 
+			</s:SpinnerList> 
+			<s:SpinnerList typicalItem="100" id="minutes">
+				<s:dataProvider> 
+					<s:NumericDataProvider minimum="0" maximum="59" stepSize="1"/>
+				</s:dataProvider> 
+			</s:SpinnerList> 
+			<s:SpinnerList typicalItem="100" id="ampm"
+						   dataProvider="{new ArrayList(['AM','PM'])}"
+						   wrapElements="false"/> 
+		</s:SpinnerListContainer>  
+		<s:Label text="Selection: {hours.selectedItem+':'+minutes.selectedItem+':'+ampm.selectedItem}"/>
+	</s:VGroup>
 	
 	<!-- And one more SpinnerListContainer just for the kick of it -->
-	<s:SpinnerListContainer top="400" left="440"> 
-		<s:SpinnerList typicalItem="7" id="digit1">
-			<s:dataProvider> 
-				<s:NumericDataProvider minimum="0" maximum="9" stepSize="1"/>
-			</s:dataProvider> 
-		</s:SpinnerList> 
-		<s:SpinnerList typicalItem="7" id="digit2">
-			<s:dataProvider> 
-				<s:NumericDataProvider minimum="0" maximum="9" stepSize="1"/>
-			</s:dataProvider> 
-		</s:SpinnerList> 
-		<s:SpinnerList typicalItem="7" id="digit3">
-			<s:dataProvider> 
-				<s:NumericDataProvider minimum="0" maximum="9" stepSize="1"/>
-			</s:dataProvider> 
-		</s:SpinnerList> 
- 
-	</s:SpinnerListContainer>  	
-	<s:Label x="466" y="727" 
-			 text="Selection: {Number(String(digit1.selectedItem)+String(digit2.selectedItem)+String(digit3.selectedItem))}"/>
+	<s:VGroup height="100%" width="100%" verticalAlign="middle" horizontalAlign="center">
+		<s:SpinnerListContainer> 
+			<s:SpinnerList typicalItem="7" id="digit1">
+				<s:dataProvider> 
+					<s:NumericDataProvider minimum="0" maximum="9" stepSize="1"/>
+				</s:dataProvider> 
+			</s:SpinnerList> 
+			<s:SpinnerList typicalItem="7" id="digit2">
+				<s:dataProvider> 
+					<s:NumericDataProvider minimum="0" maximum="9" stepSize="1"/>
+				</s:dataProvider> 
+			</s:SpinnerList> 
+			<s:SpinnerList typicalItem="7" id="digit3">
+				<s:dataProvider> 
+					<s:NumericDataProvider minimum="0" maximum="9" stepSize="1"/>
+				</s:dataProvider> 
+			</s:SpinnerList> 
+		</s:SpinnerListContainer>  	
+		<s:Label text="Selection: {Number(String(digit1.selectedItem)+String(digit2.selectedItem)+String(digit3.selectedItem))}"/>		
+	</s:VGroup>
+
 
 
 </s:View>

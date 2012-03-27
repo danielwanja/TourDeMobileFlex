@@ -7,6 +7,7 @@ package
 	import samples.GestureRotate;
 	import samples.GestureSwipe;
 	import samples.GestureZoom;
+	import samples.IconSpinnerList;
 	import samples.MobileAppAnatomy;
 	import samples.MultipleTouchPoints;
 	import samples.NativeAppIntegration;
@@ -19,6 +20,7 @@ package
 	import samples.SimpleBusyIndicator;
 	import samples.SimpleCheckbox;
 	import samples.SimpleDB;
+	import samples.SimpleDateSpinner;
 	import samples.SimpleGPS;
 	import samples.SimpleIconItemRenderer;
 	import samples.SimpleLabelItemRenderer;
@@ -57,6 +59,8 @@ package
 		public static const toggleSwitch:SampleItem = new SampleItem(0, "Toggle Switch", SimpleToggleSwitch, Icons.toggleSwitch);
 		public static const slider:SampleItem = new SampleItem(1000204, "Slider", SimpleSlider, Icons.slider);
 		public static const spinnerList:SampleItem = new SampleItem(0, "Spinner List", SimpleSpinnerList, Icons.spinnerList);
+		public static const iconSpinnerList:SampleItem = new SampleItem(0, "Icon Spinner List", IconSpinnerList, Icons.spinnerList);
+		public static const dateSpinner:SampleItem = new SampleItem(0, "Date Spinner", SimpleDateSpinner, Icons.spinnerList);
 		
 		public static const stageWebView:SampleItem = new SampleItem(1000300, "Stage Web View", SimpleStageWebView, Icons.webBrowser);
 		

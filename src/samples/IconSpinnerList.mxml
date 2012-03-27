@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="IconDateSpinner">
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle" />
+	</s:layout>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayList;
+			
+			[Embed(source="/samples/icons/spinner/flex_50x50.gif")]
+			[Bindable]
+			public var icon0:Class;
+			[Embed(source="/samples/icons/spinner/acrobat_50x50.gif")]
+			[Bindable]
+			public var icon1:Class;
+			[Embed(source="/samples/icons/spinner/flash-builder-48x48.png")]
+			[Bindable]
+			public var icon2:Class;
+			[Embed(source="/samples/icons/spinner/flash_50x50.gif")]
+			[Bindable]
+			public var icon3:Class;
+			[Embed(source="/samples/icons/spinner/flash_player_50x50.gif")]
+			[Bindable]
+			public var icon4:Class;
+			[Embed(source="/samples/icons/spinner/photoshop_50x50.gif")]
+			[Bindable]
+			public var icon5:Class;
+			
+			// Return an ArrayList of icons for each spinner
+			private function getIconList():ArrayList {
+				var a:ArrayList = new ArrayList();
+				a.addItem({icon:icon0});
+				a.addItem({icon:icon1});
+				a.addItem({icon:icon2});
+				a.addItem({icon:icon3});
+				a.addItem({icon:icon4});
+				a.addItem({icon:icon5});
+				return a;
+			}
+		]]>
+	</fx:Script>	
+	<s:SpinnerListContainer>
+		<s:SpinnerList id="productList1" width="90" dataProvider="{getIconList()}" selectedIndex="0">
+			<s:itemRenderer>
+				<fx:Component>
+					<s:IconItemRenderer labelField="" iconField="icon"/>
+				</fx:Component>
+			</s:itemRenderer>           
+		</s:SpinnerList>
+		<s:SpinnerList id="productList2" width="90" dataProvider="{getIconList()}" selectedIndex="2">
+			<s:itemRenderer>
+				<fx:Component>
+					<s:IconItemRenderer labelField="" iconField="icon"/>
+				</fx:Component>
+			</s:itemRenderer>           
+		</s:SpinnerList>
+		<s:SpinnerList id="productList3" width="90" dataProvider="{getIconList()}" selectedIndex="1">
+			<s:itemRenderer>
+				<fx:Component>
+					<s:IconItemRenderer labelField="" iconField="icon"/>
+				</fx:Component>
+			</s:itemRenderer>           
+		</s:SpinnerList>
+	</s:SpinnerListContainer>   
+</s:View>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		title="{data.name}">
+	<fx:Script>
+		<![CDATA[
+			import spark.components.calendarClasses.DateSelectorDisplayMode;
+		]]>
+	</fx:Script>
+	
+	<!-- List in a Callout Button -->
+	<s:CalloutButton x="67" y="317" label="Mode" verticalPosition="middle" horizontalPosition="after" >
+		<s:calloutLayout>
+			<s:HorizontalLayout/> 
+		</s:calloutLayout>
+		<s:List id="dateDisplayMode" labelField="data"  width="192" height="185" 
+				typicalItem="dateAndTime">
+			<s:ArrayList>
+				<fx:Object data="{DateSelectorDisplayMode.DATE}"></fx:Object>
+				<fx:Object data="{DateSelectorDisplayMode.TIME}"></fx:Object>
+				<fx:Object data="{DateSelectorDisplayMode.DATE_AND_TIME}"></fx:Object>
+			</s:ArrayList>
+		</s:List>
+	</s:CalloutButton>		
+	
+	<s:DateSpinner id="dateSpinner" x="66" y="32" displayMode="{dateDisplayMode.selectedItem.data}"  />
+	<s:Label x="179" y="342" text="Selection: {dateSpinner.selectedDate}"/>
+	
+	
+</s:View>
